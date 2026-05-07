@@ -362,6 +362,85 @@ textarea {
   background: var(--brand-blue);
 }
 
+.mechanics-page {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 84px clamp(28px, 7vw, 150px) 64px;
+}
+
+.mechanics-page h1 {
+  margin-bottom: 54px;
+  color: var(--brand-blue);
+  font-size: clamp(3.2rem, 5.2vw, 5.7rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.scam-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 34px;
+}
+
+.scam-type-card {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: center;
+  min-height: 136px;
+  padding: 26px 30px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 12px 24px rgba(24, 37, 56, 0.08);
+}
+
+.scam-type-icon {
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border: 1px solid #bad6ee;
+  border-radius: 16px;
+  background: #eaf4ff;
+  color: var(--brand-blue);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.scam-type-card h2 {
+  margin-bottom: 8px;
+  color: #121a2a;
+  font-size: clamp(1.55rem, 2vw, 1.95rem);
+  line-height: 1.1;
+}
+
+.scam-type-card p {
+  margin: 0;
+  color: #47566d;
+  font-size: clamp(1rem, 1.25vw, 1.24rem);
+  line-height: 1.45;
+}
+
+.scam-type-card button {
+  min-width: 110px;
+  min-height: 54px;
+  border: 2px solid var(--brand-blue);
+  border-radius: 16px;
+  background: white;
+  color: var(--brand-blue);
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mechanics-note {
+  margin: 44px 0 0;
+  color: #47566d;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
 .check-shell .analysis-panel {
   max-width: 780px;
   margin: 0 auto;
@@ -926,6 +1005,7 @@ input:focus {
   .feature-grid,
   .support-grid,
   .recovery-grid,
+  .scam-type-grid,
   .result-sections,
   .flow-grid,
   .metrics-grid {
@@ -964,6 +1044,11 @@ input:focus {
 
   .history-item {
     grid-template-columns: 1fr;
+  }
+
+  .scam-type-card {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
   .gauge {

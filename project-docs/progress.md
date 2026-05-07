@@ -49,3 +49,10 @@
 - Reordered the homepage content to match the provided full-page reference: `Our Features`, `What To Do If You've Been Scammed`, then `How It Works`.
 - Tightened section widths, typography, card sizing, and grid spacing so the feature, recovery, and process sections render as centered narrow content blocks.
 - Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.
+
+## 2026-05-07
+
+- Removed `Scam Types` from the homepage content flow and made it a separate routed view.
+- Added the standalone `The Mechanics Of Scams` page with scam type cards for romance, bank, phishing, shopping, customer service, delivery, lottery, and charity scams.
+- Updated routing so the header `Scam Types` link opens the standalone page instead of scrolling within Home.
+- Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.
