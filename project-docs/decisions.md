@@ -17,3 +17,9 @@
 - Decision: Do not add workflow scripts or full automation for this setup.
 - Reason: The requested first version is a lightweight documentation workflow.
 - Outcome: No dependencies, scripts, or automation files were added.
+
+## 2026-05-07 - Build scam detection frontend as a static prototype
+
+- Decision: Add the first scam detection frontend under `scam-detection-web/` using plain HTML, CSS, and JavaScript.
+- Reason: The provided zip contains UI source files but no runnable manifest, and `node`/`npm` are unavailable in the current environment.
+- Outcome: The prototype can be opened directly in a browser and demonstrates the core user flow without a build step.
