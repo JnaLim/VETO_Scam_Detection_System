@@ -31,24 +31,13 @@ const highRiskTerms = new Set([
 
 const suspiciousDomains = ["bit.ly", "tinyurl", "t.co", "grab-prize", "verify-login"];
 
-const sampleHistory = [
-  {
-    id: "seed-1",
-    type: "Text",
-    timestamp: "Demo record",
-    preview: "Your parcel delivery failed. Please verify your address.",
-    label: "Suspicious",
-    score: 62,
-  },
-];
-
 const getHistory = () => {
   const raw = localStorage.getItem("scam-detection-history");
-  if (!raw) return sampleHistory;
+  if (!raw) return [];
   try {
-    return JSON.parse(raw);
+    return JSON.parse(raw).filter((item) => item.id !== "seed-1");
   } catch {
-    return sampleHistory;
+    return [];
   }
 };
 
@@ -113,7 +102,7 @@ const classifyContent = ({ type, text, url }) => {
   return {
     id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
     type: type[0].toUpperCase() + type.slice(1),
-    timestamp: new Date().toLocaleString(),
+    timestamp: "Just now",
     preview: text.slice(0, 130) || url,
     normalized,
     label,
@@ -244,31 +233,61 @@ const renderResult = (result) => {
 const renderHistory = () => {
   const items = getHistory();
   const list = document.querySelector("#history-list");
+  const clearButton = document.querySelector("#clear-history");
+  const historyNote = document.querySelector("#history-note");
+  clearButton.hidden = items.length === 0;
+  historyNote.hidden = items.length === 0;
+
   if (items.length === 0) {
-    list.innerHTML = `<section class="info-card"><h2>No history yet</h2><p class="note">Run a check to create a local history record.</p></section>`;
+    list.innerHTML = `
+      <section class="history-empty-card">
+        <div class="empty-document-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 3h7l4 4v14H7z" />
+            <path d="M14 3v5h5" />
+            <path d="M9 12h6M9 16h6" />
+          </svg>
+        </div>
+        <h2>No History Yet</h2>
+        <p>Your scam detection checks will appear here</p>
+        <a class="history-start-link" href="#check">Start Checking</a>
+      </section>
+    `;
     return;
   }
 
   list.innerHTML = items
     .map(
-      (item) => `
+      (item) => {
+        const status = item.score >= 72 ? "dangerous" : item.score >= 40 ? "suspicious" : "safe";
+        const label = status === "safe" ? "Safe" : item.label;
+        return `
         <article class="history-item">
-          <span class="type-icon">${item.type[0]}</span>
-          <div>
-            <strong>${item.type} check</strong>
-            <p class="note">${item.timestamp}</p>
-            <p>${item.preview}</p>
-          </div>
-          <div>
-            <span class="badge ${item.score >= 72 ? "dangerous" : item.score >= 40 ? "suspicious" : "safe"}">${item.label}</span>
-            <p class="note">Risk: ${item.score}%</p>
-            <div class="history-actions">
-              <button class="link-button" type="button" data-view="${item.id}">View Details</button>
-              <button class="link-button" type="button" data-delete="${item.id}">Delete</button>
+          <span class="type-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 3h7l4 4v14H7z" />
+              <path d="M14 3v5h5" />
+              <path d="M9 12h6M9 16h6" />
+            </svg>
+          </span>
+          <div class="history-main">
+            <div class="history-meta">
+              <span class="history-type-pill">${item.type}</span>
+              <span>${item.timestamp}</span>
+            </div>
+            <strong>${item.preview}</strong>
+            <div class="history-risk-row">
+              <span class="badge ${status}">${label}</span>
+              <span>Risk: ${item.score}%</span>
             </div>
           </div>
+          <div class="history-actions">
+            <button class="link-button view-action" type="button" data-view="${item.id}">View</button>
+            <button class="link-button delete-action" type="button" data-delete="${item.id}">Delete</button>
+          </div>
         </article>
-      `,
+      `;
+      },
     )
     .join("");
 };
@@ -312,7 +331,7 @@ document.querySelector("#check-form").addEventListener("submit", (event) => {
     const payload = getInputPayload();
     const result = classifyContent(payload);
     state.latestResult = result;
-    const history = [result, ...getHistory().filter((item) => item.id !== "seed-1")].slice(0, 20);
+    const history = [result, ...getHistory()].slice(0, 20);
     saveHistory(history);
     renderResult(result);
     location.hash = "result";

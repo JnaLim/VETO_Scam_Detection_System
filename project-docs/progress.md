@@ -70,3 +70,11 @@
 - `Platform Guides` shows WhatsApp, SMS, Social Media, and Email guide cards.
 - `Banking Guides` shows Online Banking Login Safety, Card & Transaction Protection, Loan & Investment Scam Awareness, and Bank Call & OTP Scam Defense cards.
 - Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.
+
+## 2026-05-07
+
+- Updated the View History page to match the provided empty and populated history references.
+- Removed the demo seed history record so a fresh browser shows the empty state.
+- Added the empty history card with document icon, `No History Yet`, helper text, and `Start Checking` action.
+- Updated populated history rows with type pill, timestamp, preview, risk badge, View/Delete actions, `Clear All`, and the local-storage note.
+- Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.

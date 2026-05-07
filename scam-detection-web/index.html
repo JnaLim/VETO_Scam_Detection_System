@@ -335,17 +335,14 @@
       </section>
 
       <section id="history-view" class="view">
-        <div class="page-shell">
-          <div class="page-title-row">
-            <div>
-              <p class="eyebrow">Local records</p>
-              <h1>Check History</h1>
-              <p>Review your past scam detection checks.</p>
-            </div>
-            <button id="clear-history" class="secondary-action" type="button">Clear All</button>
+        <div class="history-page">
+          <div class="history-title">
+            <h1>Check History</h1>
+            <p>Review your past scam detection checks</p>
+            <button id="clear-history" class="clear-history-button" type="button" hidden>Clear All</button>
           </div>
           <div id="history-list" class="history-list"></div>
-          <p class="note">History is stored locally in your browser. Clearing browser data will remove all history records.</p>
+          <p id="history-note" class="history-note" hidden><strong>Note:</strong> History is stored locally in your browser. Clearing browser data will remove all history records.</p>
         </div>
       </section>
 
