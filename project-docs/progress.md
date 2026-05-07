@@ -37,3 +37,9 @@
 - Replaced text-based feature markers with centered circular icon treatments for Text Analysis, Image Scanning, Voice Recognition, and URL Verification.
 - Adjusted feature heading, subtitle, card spacing, card shadows, and card copy to follow the reference screenshot.
 - Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.
+
+## 2026-05-07
+
+- Updated the homepage `Guide` section to match the provided "What To Do If You've Been Scammed" reference.
+- Added three recovery cards for `Secure Accounts`, `Report Incident`, and `Gather Evidence` with dark-blue headers and bullet guidance.
+- Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.

@@ -311,6 +311,57 @@ textarea {
   background: #fff0d8;
 }
 
+.recovery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px;
+  margin-top: 64px;
+}
+
+.recovery-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 14px 30px rgba(24, 37, 56, 0.1);
+}
+
+.recovery-card h3 {
+  margin: 0;
+  padding: 30px 32px;
+  background: var(--brand-blue);
+  color: white;
+  font-size: clamp(1.6rem, 2.1vw, 2rem);
+  line-height: 1.1;
+}
+
+.recovery-card ul {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+  padding: 34px 34px 44px;
+  list-style: none;
+}
+
+.recovery-card li {
+  position: relative;
+  padding-left: 30px;
+  color: #1b273a;
+  font-size: 1.14rem;
+  line-height: 1.48;
+}
+
+.recovery-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+}
+
 .check-shell .analysis-panel {
   max-width: 780px;
   margin: 0 auto;
@@ -854,6 +905,7 @@ input:focus {
   .home-hero,
   .feature-grid,
   .support-grid,
+  .recovery-grid,
   .result-sections,
   .flow-grid,
   .metrics-grid {
