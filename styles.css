@@ -202,27 +202,27 @@ textarea {
 
 .home-section,
 .check-shell {
-  max-width: 1440px;
+  max-width: 984px;
   margin: 0 auto;
-  padding: 86px 24px;
+  padding: 72px 24px;
 }
 
 .section-heading.center {
-  max-width: 880px;
-  margin: 0 auto 48px;
+  max-width: 760px;
+  margin: 0 auto 42px;
   text-align: center;
 }
 
 .section-heading.center h2 {
   color: #111827;
-  font-size: clamp(2.45rem, 4.2vw, 3.9rem);
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
   line-height: 1.08;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .section-heading.center p {
   color: #536072;
-  font-size: clamp(1.02rem, 1.3vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.1vw, 1.12rem);
   line-height: 1.55;
 }
 
@@ -230,7 +230,7 @@ textarea {
 .support-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 20px;
 }
 
 .support-grid {
@@ -248,42 +248,42 @@ textarea {
 }
 
 .feature-grid .feature-card {
-  min-height: 260px;
+  min-height: 196px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 34px 28px;
+  gap: 9px;
+  padding: 24px 22px;
   text-align: center;
 }
 
 .feature-card h3 {
   margin: 4px 0 4px;
   color: #141b2a;
-  font-size: 1.33rem;
+  font-size: 1.02rem;
 }
 
 .feature-card p {
-  max-width: 250px;
+  max-width: 190px;
   margin: 0 auto;
   color: #536072;
-  font-size: 1.08rem;
+  font-size: 0.95rem;
   line-height: 1.55;
 }
 
 .feature-grid .feature-icon {
   display: grid;
   place-items: center;
-  width: 68px;
-  height: 68px;
-  margin-bottom: 8px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 7px;
   border-radius: 50%;
 }
 
 .feature-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -314,8 +314,8 @@ textarea {
 .recovery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 44px;
-  margin-top: 64px;
+  gap: 26px;
+  margin-top: 42px;
 }
 
 .recovery-card {
@@ -328,26 +328,26 @@ textarea {
 
 .recovery-card h3 {
   margin: 0;
-  padding: 30px 32px;
+  padding: 22px 24px;
   background: var(--brand-blue);
   color: white;
-  font-size: clamp(1.6rem, 2.1vw, 2rem);
+  font-size: clamp(1.18rem, 1.55vw, 1.35rem);
   line-height: 1.1;
 }
 
 .recovery-card ul {
   display: grid;
-  gap: 24px;
+  gap: 18px;
   margin: 0;
-  padding: 34px 34px 44px;
+  padding: 24px 28px 34px;
   list-style: none;
 }
 
 .recovery-card li {
   position: relative;
-  padding-left: 30px;
+  padding-left: 26px;
   color: #1b273a;
-  font-size: 1.14rem;
+  font-size: 0.95rem;
   line-height: 1.48;
 }
 
@@ -665,7 +665,12 @@ input:focus {
   padding: 28px 24px;
 }
 
-.flow-grid,
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -684,16 +689,31 @@ input:focus {
   padding: 18px;
 }
 
+.flow-grid article {
+  min-height: 184px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 24px;
+  text-align: center;
+}
+
 .flow-grid span {
   display: grid;
   place-items: center;
   width: 34px;
   height: 34px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   border-radius: 50%;
-  background: var(--primary);
+  background: #1f3f91;
   color: white;
   font-weight: 900;
+}
+
+.flow-grid h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
 }
 
 .result-layout {
