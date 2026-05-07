@@ -125,11 +125,24 @@ const classifyContent = ({ type, text, url }) => {
   };
 };
 
-const showView = (name) => {
+const routeMap = {
+  features: "home",
+  "how-it-works": "home",
+  privacy: "privacy",
+  terms: "terms",
+  ai: "about",
+};
+
+const showView = (rawName) => {
+  const name = routeMap[rawName] || rawName || "home";
   document.querySelectorAll(".view").forEach((view) => view.classList.remove("active"));
-  const target = document.querySelector(`#${name}-view`) || document.querySelector("#check-view");
+  const target = document.querySelector(`#${name}-view`) || document.querySelector("#home-view");
   target.classList.add("active");
   if (name === "history") renderHistory();
+  if (rawName === "features" || rawName === "how-it-works") {
+    setTimeout(() => document.querySelector(`#${rawName}`)?.scrollIntoView({ behavior: "smooth" }), 0);
+    return;
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
@@ -323,6 +336,6 @@ document.querySelector("#clear-history").addEventListener("click", () => {
   renderHistory();
 });
 
-window.addEventListener("hashchange", () => showView(location.hash.replace("#", "") || "check"));
+window.addEventListener("hashchange", () => showView(location.hash.replace("#", "") || "home"));
 
-showView(location.hash.replace("#", "") || "check");
+showView(location.hash.replace("#", "") || "home");

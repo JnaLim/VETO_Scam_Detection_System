@@ -3,58 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scam Detection System</title>
+    <title>VETO Scam Detection System</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="app-header">
-      <a class="brand" href="#check" aria-label="Scam Detection System home">
-        <span class="brand-mark">S</span>
-        <span>Scam Detection System</span>
+      <a class="brand" href="#home" aria-label="VETO Scam Detection System home">
+        <img src="./assets/logo.png" alt="VETO Scam Detection System" />
       </a>
       <nav class="top-nav" aria-label="Primary navigation">
-        <a href="#check">Check</a>
-        <a href="#history">History</a>
-        <a href="#admin">Admin</a>
-        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it Works</a>
+        <a href="#admin">API</a>
+        <a href="#admin">Enterprise</a>
+        <a href="#about">Support</a>
       </nav>
+      <a class="history-link" href="#history">View History</a>
     </header>
 
     <main>
-      <section id="check-view" class="view active">
-        <div class="workspace-grid">
-          <section class="hero-panel">
+      <section id="home-view" class="view active">
+        <section class="home-hero">
+          <div class="home-copy">
             <p class="eyebrow">Web-based scam detection prototype</p>
-            <h1>Analyze suspicious content before you respond.</h1>
-            <p class="hero-copy">
-              Check messages, screenshots, voice recordings, and links through one
-              consistent text-classification flow with safe URL inspection.
+            <h1>Scam Detection System</h1>
+            <p>
+              An advanced tool to detect and analyze potential scams quickly and
+              accurately across messages, images, voice recordings, and links.
             </p>
-            <div class="trust-row" aria-label="Supported input types">
-              <span>Text</span>
-              <span>Image OCR</span>
-              <span>Voice STT</span>
-              <span>URL Safety</span>
-            </div>
-            <div class="hero-visual" aria-hidden="true">
-              <div class="screen-card">
-                <div class="screen-bar"></div>
-                <div class="message danger"></div>
-                <div class="message"></div>
-                <div class="message short"></div>
-              </div>
-              <div class="shield-visual">✓</div>
-              <div class="score-visual">82%</div>
-            </div>
-          </section>
+            <a class="primary-link" href="#check">Start Checking Now</a>
+          </div>
+          <div class="home-art" aria-label="Scam detection illustration">
+            <img src="./assets/hero.png" alt="Person checking a suspicious mobile message" />
+            <div class="art-card art-warning">Suspicious link detected</div>
+            <div class="art-card art-score">Risk score 82%</div>
+          </div>
+        </section>
+
+        <section id="features" class="home-section" aria-labelledby="features-title">
+          <div class="section-heading center">
+            <p class="eyebrow">Main features</p>
+            <h2 id="features-title">One flow for different suspicious content</h2>
+          </div>
+          <div class="feature-grid">
+            <article><span>TXT</span><h3>Text Analysis</h3><p>Analyze SMS, email, WhatsApp, and social media messages.</p></article>
+            <article><span>OCR</span><h3>Image Scanning</h3><p>Extract screenshot text with OCR before classifier analysis.</p></article>
+            <article><span>STT</span><h3>Voice Recognition</h3><p>Convert voice recordings into text for the same detection model.</p></article>
+            <article><span>URL</span><h3>URL Verification</h3><p>Check URL format, redirects, and download indicators safely.</p></article>
+          </div>
+        </section>
+
+        <section id="how-it-works" class="home-section" aria-labelledby="flow-title">
+          <div class="section-heading center">
+            <p class="eyebrow">How it works</p>
+            <h2 id="flow-title">A clear detection process for non-technical users</h2>
+          </div>
+          <div class="flow-grid">
+            <article><span>1</span><h3>Enter Suspicious Content</h3><p>Paste text, upload an image or voice file, or submit a URL.</p></article>
+            <article><span>2</span><h3>Get Instant Analysis</h3><p>The prototype normalizes content and runs the classifier flow.</p></article>
+            <article><span>3</span><h3>Review the Results</h3><p>See the result, score, suspicious reasons, and recommended action.</p></article>
+          </div>
+        </section>
+      </section>
+
+      <section id="check-view" class="view">
+        <div class="check-shell">
+          <a class="back-link" href="#home">← Back to Homepage</a>
+          <div class="section-heading center">
+            <p class="eyebrow">Check for scams</p>
+            <h1>Check for Scams</h1>
+            <p>Choose your input method and submit content for analysis.</p>
+          </div>
 
           <section class="analysis-panel" aria-labelledby="check-title">
             <div class="section-heading">
-              <p class="eyebrow">Start a check</p>
               <h2 id="check-title">Submit suspicious content</h2>
               <p>
-                The prototype converts each input type into text, then runs the
-                same scam classifier flow and explanation layer.
+                The prototype converts each input type into text, then uses the
+                same machine learning classifier flow.
               </p>
             </div>
 
@@ -71,7 +97,7 @@
                 <textarea
                   id="text-input"
                   rows="8"
-                  placeholder="Paste SMS, email, WhatsApp, or social media message here..."
+                  placeholder="Enter at least 10 characters of text to analyze"
                 ></textarea>
               </div>
 
@@ -79,7 +105,7 @@
                 <label for="image-input">Screenshot or image</label>
                 <div class="upload-box">
                   <input id="image-input" type="file" accept="image/*" />
-                  <span>OCR simulation extracts text from uploaded screenshots.</span>
+                  <span>Upload an image file. OCR will extract text for scam analysis.</span>
                 </div>
                 <textarea id="image-text" rows="5" placeholder="Extracted OCR text will appear here"></textarea>
               </div>
@@ -88,52 +114,28 @@
                 <label for="voice-input">Voice recording</label>
                 <div class="upload-box">
                   <input id="voice-input" type="file" accept="audio/*" />
-                  <span>STT simulation converts voice recordings into analyzable text.</span>
+                  <span>Upload an audio file. Speech-to-text will create a transcript.</span>
                 </div>
                 <textarea id="voice-text" rows="5" placeholder="Transcribed speech will appear here"></textarea>
               </div>
 
               <div class="tab-panel" data-panel="url">
                 <label for="url-input">Suspicious URL or link</label>
-                <input id="url-input" type="url" placeholder="https://example.com/verify-account" />
-                <textarea
-                  id="url-context"
-                  rows="5"
-                  placeholder="Optional message context around the URL"
-                ></textarea>
+                <input id="url-input" type="url" placeholder="Paste suspicious link here" />
+                <textarea id="url-context" rows="5" placeholder="Optional message context around the URL"></textarea>
               </div>
 
               <p id="form-error" class="form-error" role="alert"></p>
-              <button class="primary-action" type="submit">Analyze Content</button>
+              <button class="primary-action" type="submit">Check Now</button>
             </form>
           </section>
-        </div>
 
-        <section class="flow-strip" aria-labelledby="flow-title">
-          <h2 id="flow-title">Prototype analysis flow</h2>
-          <div class="flow-grid">
-            <article>
-              <span>1</span>
-              <h3>Normalize Input</h3>
-              <p>Lowercase text, reduce spacing, and convert OCR/STT output into one text field.</p>
-            </article>
-            <article>
-              <span>2</span>
-              <h3>Run Classifier</h3>
-              <p>Mock TF-IDF + Logistic Regression output estimates scam likelihood.</p>
-            </article>
-            <article>
-              <span>3</span>
-              <h3>Check URL Safely</h3>
-              <p>Detect risky redirects and download indicators without opening or downloading content.</p>
-            </article>
-            <article>
-              <span>4</span>
-              <h3>Explain Result</h3>
-              <p>Show keywords, risk factors, score, and practical action guidance.</p>
-            </article>
+          <div class="support-grid">
+            <article><h3>Privacy First</h3><p>Submitted content stays in this browser prototype.</p></article>
+            <article><h3>Fast Analysis</h3><p>Get a simulated scam detection result within seconds.</p></article>
+            <article><h3>Actionable Results</h3><p>Review risk factors and simple next-step guidance.</p></article>
           </div>
-        </section>
+        </div>
       </section>
 
       <section id="result-view" class="view">
@@ -149,12 +151,12 @@
             <div>
               <p class="eyebrow">Local records</p>
               <h1>Check History</h1>
-              <p>Review previous scam detection checks stored in this browser.</p>
+              <p>Review your past scam detection checks.</p>
             </div>
             <button id="clear-history" class="secondary-action" type="button">Clear All</button>
           </div>
           <div id="history-list" class="history-list"></div>
-          <p class="note">History is stored locally in your browser. Clearing browser data will remove all records.</p>
+          <p class="note">History is stored locally in your browser. Clearing browser data will remove all history records.</p>
         </div>
       </section>
 
@@ -184,45 +186,46 @@
         </div>
       </section>
 
+      <section id="privacy-view" class="view">
+        <div class="page-shell document-page">
+          <p class="eyebrow">Legal</p>
+          <h1>Privacy Policy</h1>
+          <p>How we collect, use and protect your information.</p>
+          <section><h2>Information We Collect</h2><p>This prototype only uses submitted content for scam analysis flow demonstration.</p></section>
+          <section><h2>File Uploads and Analysis Data</h2><p>Uploaded content should not be permanently stored unless required for approved system testing or improvement.</p></section>
+          <section><h2>Security Measures</h2><p>URL checks are non-executing and focus on safe indicators such as format, redirects and download hints.</p></section>
+        </div>
+      </section>
+
+      <section id="terms-view" class="view">
+        <div class="page-shell document-page">
+          <p class="eyebrow">Legal</p>
+          <h1>Terms of Service</h1>
+          <p>Rules and conditions for using the Scam Detection System.</p>
+          <section><h2>Accuracy of Results</h2><p>The system provides scam risk analysis for informational purposes only and cannot guarantee that all scams will be detected.</p></section>
+          <section><h2>User Responsibilities</h2><p>Users should still verify suspicious content through official channels before taking action.</p></section>
+          <section><h2>Limitation of Liability</h2><p>The prototype is intended for academic demonstration and safe decision support.</p></section>
+        </div>
+      </section>
+
       <section id="about-view" class="view">
         <div class="page-shell document-page">
           <p class="eyebrow">Transparency</p>
-          <h1>How this prototype works</h1>
-          <section>
-            <h2>Purpose</h2>
-            <p>
-              This system demonstrates a safe scam checking workflow for Final Year
-              Project scope. It supports manual text, OCR text from images, STT
-              transcripts from voice recordings, and non-executing URL checks.
-            </p>
-          </section>
-          <section>
-            <h2>AI and Safety</h2>
-            <p>
-              The intended backend model uses a single machine learning text
-              classifier across all converted text inputs. URL inspection focuses on
-              safe indicators such as suspicious formats, redirect patterns, and
-              download hints without opening risky pages.
-            </p>
-          </section>
-          <section>
-            <h2>Limitations</h2>
-            <p>
-              Results are risk predictions and user guidance only. Users should
-              still verify senders, avoid sharing sensitive information, and report
-              suspicious content through trusted channels.
-            </p>
-          </section>
+          <h1>AI Statement</h1>
+          <p>How artificial intelligence is used in this system.</p>
+          <section><h2>Purpose of AI in the System</h2><p>Machine learning is used to classify suspicious content as scam/fake or legitimate.</p></section>
+          <section><h2>OCR and Speech-to-Text Usage</h2><p>OCR extracts text from images and speech-to-text converts voice recordings into text for the same classifier.</p></section>
+          <section><h2>Transparency and Explainability</h2><p>Results include suspicious keywords, URL risk factors, risk score, and simple action guidance.</p></section>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>© 2026 Scam Detection System Prototype</span>
+      <span>© 2026 VETO Scam Detection System</span>
       <nav aria-label="Footer links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
         <a href="#about">AI Statement</a>
-        <a href="#about">Privacy</a>
-        <a href="#about">Terms</a>
       </nav>
     </footer>
 
