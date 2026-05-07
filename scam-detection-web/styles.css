@@ -7,7 +7,8 @@
   --muted: #657084;
   --border: #dce4ef;
   --primary: #1d5fd1;
-  --primary-dark: #164ba5;
+  --primary-dark: #0b4b72;
+  --brand-blue: #0c4c72;
   --safe: #11845b;
   --warning: #b66b00;
   --danger: #c93434;
@@ -23,7 +24,7 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: #f3f8fc;
   color: var(--text);
 }
 
@@ -44,8 +45,8 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px clamp(20px, 5vw, 64px);
-  background: rgba(255, 255, 255, 0.92);
+  padding: 18px clamp(28px, 7vw, 150px);
+  background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(14px);
   position: sticky;
@@ -64,7 +65,7 @@ textarea {
 
 .brand img {
   display: block;
-  width: 174px;
+  width: 130px;
   height: auto;
 }
 
@@ -82,9 +83,9 @@ textarea {
 .footer nav {
   display: flex;
   align-items: center;
-  gap: 18px;
-  color: var(--muted);
-  font-weight: 600;
+  gap: clamp(18px, 2.3vw, 34px);
+  color: #2f3b4e;
+  font-weight: 700;
 }
 
 .history-link,
@@ -95,10 +96,10 @@ textarea {
   min-height: 44px;
   border-radius: 8px;
   padding: 0 18px;
-  background: var(--primary);
+  background: var(--brand-blue);
   color: white;
   font-weight: 850;
-  box-shadow: 0 12px 28px rgba(29, 95, 209, 0.18);
+  box-shadow: 0 12px 28px rgba(12, 76, 114, 0.18);
 }
 
 .history-link:hover,
@@ -123,46 +124,53 @@ textarea {
 
 .home-hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(340px, 0.82fr);
-  gap: clamp(28px, 5vw, 64px);
+  grid-template-columns: minmax(620px, 0.98fr) minmax(420px, 0.82fr);
+  gap: clamp(32px, 5vw, 88px);
   align-items: center;
-  max-width: 1180px;
-  min-height: calc(100vh - 96px);
+  max-width: 1760px;
+  min-height: calc(100vh - 88px);
   margin: 0 auto;
-  padding: 44px 24px;
+  padding: 56px clamp(28px, 7vw, 150px) 78px;
 }
 
 .home-copy {
-  max-width: 680px;
+  max-width: 850px;
 }
 
 .home-copy p {
-  color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.72;
+  color: #536072;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1.38;
+  margin-bottom: 34px;
 }
 
-.home-copy .primary-link {
-  margin-top: 16px;
-  min-width: 190px;
+.home-copy h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4rem, 6.8vw, 7.3rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: #101827;
+  margin-bottom: 24px;
+}
+
+.home-copy h1 span {
+  color: var(--brand-blue);
 }
 
 .home-art {
-  min-height: 520px;
+  min-height: 680px;
   display: grid;
-  place-items: center;
+  place-items: end center;
   position: relative;
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(238, 246, 255, 0.75)),
-    radial-gradient(circle at 50% 30%, rgba(58, 183, 213, 0.2), transparent 45%);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
   overflow: hidden;
 }
 
 .home-art img {
-  width: min(78%, 330px);
+  width: min(96%, 610px);
   height: auto;
   object-fit: contain;
   position: relative;
@@ -241,6 +249,15 @@ textarea {
 .check-shell .analysis-panel {
   max-width: 780px;
   margin: 0 auto;
+}
+
+.compact-check {
+  max-width: 760px;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow:
+    0 16px 32px rgba(15, 23, 42, 0.08),
+    0 0 0 1px rgba(148, 163, 184, 0.18);
 }
 
 .workspace-grid {
@@ -414,27 +431,28 @@ h3 {
 .tab-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin: 22px 0;
-  padding: 6px;
-  background: var(--surface-muted);
-  border-radius: 8px;
+  gap: 10px;
+  margin: 0 0 26px;
+  padding: 10px;
+  background: #f7f7f8;
+  border-radius: 20px;
 }
 
 .tab {
-  min-height: 44px;
+  min-height: 64px;
   border: 0;
-  border-radius: 6px;
+  border-radius: 16px;
   background: transparent;
-  color: var(--muted);
+  color: #687386;
   font-weight: 800;
+  font-size: 1.08rem;
   cursor: pointer;
 }
 
 .tab.active {
-  color: var(--primary);
+  color: #2f7cff;
   background: white;
-  box-shadow: 0 8px 18px rgba(29, 95, 209, 0.12);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
 }
 
 .tab-panel {
@@ -448,6 +466,7 @@ h3 {
 
 label {
   font-weight: 800;
+  font-size: 1.15rem;
 }
 
 textarea,
@@ -455,11 +474,16 @@ input[type="url"] {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 18px 20px;
   color: var(--text);
   background: white;
   outline: none;
   resize: vertical;
+}
+
+.compact-check textarea {
+  min-height: 170px;
+  font-size: 1.02rem;
 }
 
 textarea:focus,
@@ -493,9 +517,11 @@ input:focus {
 
 .primary-action {
   width: 100%;
+  min-height: 64px;
   margin-top: 18px;
-  background: var(--primary);
+  background: var(--brand-blue);
   color: white;
+  font-size: 1.15rem;
 }
 
 .primary-action:hover {
@@ -780,11 +806,19 @@ input:focus {
   }
 
   .brand img {
-    width: 142px;
+    width: 124px;
   }
 
   .home-art {
     min-height: 420px;
+  }
+
+  .home-hero {
+    padding: 34px 20px 54px;
+  }
+
+  .home-copy h1 {
+    font-size: clamp(3.1rem, 13vw, 5.5rem);
   }
 
   .tab-list {

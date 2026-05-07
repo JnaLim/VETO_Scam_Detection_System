@@ -14,29 +14,71 @@
       <nav class="top-nav" aria-label="Primary navigation">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it Works</a>
-        <a href="#admin">API</a>
-        <a href="#admin">Enterprise</a>
-        <a href="#about">Support</a>
+        <a href="#scam-types">Scam Types</a>
+        <a href="#guide">Guide</a>
+        <a href="#history">View History</a>
       </nav>
-      <a class="history-link" href="#history">View History</a>
+      <a class="history-link" href="#check">Check Now</a>
     </header>
 
     <main>
       <section id="home-view" class="view active">
         <section class="home-hero">
           <div class="home-copy">
-            <p class="eyebrow">Web-based scam detection prototype</p>
-            <h1>Scam Detection System</h1>
+            <h1>Scam or Real?<br />Run it by <span>VETO</span></h1>
             <p>
-              An advanced tool to detect and analyze potential scams quickly and
-              accurately across messages, images, voice recordings, and links.
+              Unsure? Confused? Let VETO clear the noise.
             </p>
-            <a class="primary-link" href="#check">Start Checking Now</a>
+
+            <section id="home-check-panel" class="analysis-panel compact-check" aria-labelledby="check-title">
+              <div class="tab-list" role="tablist" aria-label="Input type">
+                <button class="tab active" data-tab="text" type="button">Text</button>
+                <button class="tab" data-tab="image" type="button">Image</button>
+                <button class="tab" data-tab="voice" type="button">Voice</button>
+                <button class="tab" data-tab="url" type="button">URL</button>
+              </div>
+
+              <form id="check-form" class="check-form">
+                <div class="tab-panel active" data-panel="text">
+                  <label id="check-title" for="text-input">Enter Suspicious Text</label>
+                  <textarea
+                    id="text-input"
+                    rows="7"
+                    placeholder="Enter at least 10 characters of text to analyze"
+                  ></textarea>
+                </div>
+
+                <div class="tab-panel" data-panel="image">
+                  <label for="image-input">Upload Suspicious Image</label>
+                  <div class="upload-box">
+                    <input id="image-input" type="file" accept="image/*" />
+                    <span>Upload a screenshot. OCR will extract text for scam analysis.</span>
+                  </div>
+                  <textarea id="image-text" rows="4" placeholder="Extracted OCR text will appear here"></textarea>
+                </div>
+
+                <div class="tab-panel" data-panel="voice">
+                  <label for="voice-input">Upload Suspicious Voice Recording</label>
+                  <div class="upload-box">
+                    <input id="voice-input" type="file" accept="audio/*" />
+                    <span>Upload an audio file. Speech-to-text will create a transcript.</span>
+                  </div>
+                  <textarea id="voice-text" rows="4" placeholder="Transcribed speech will appear here"></textarea>
+                </div>
+
+                <div class="tab-panel" data-panel="url">
+                  <label for="url-input">Enter Suspicious URL</label>
+                  <input id="url-input" type="url" placeholder="Paste suspicious link here" />
+                  <textarea id="url-context" rows="4" placeholder="Optional message context around the URL"></textarea>
+                </div>
+
+                <p id="form-error" class="form-error" role="alert"></p>
+                <button class="primary-action" type="submit">Check Now</button>
+              </form>
+            </section>
           </div>
           <div class="home-art" aria-label="Scam detection illustration">
             <img src="./assets/hero.png" alt="Person checking a suspicious mobile message" />
-            <div class="art-card art-warning">Suspicious link detected</div>
-            <div class="art-card art-score">Risk score 82%</div>
           </div>
         </section>
 
@@ -64,78 +106,30 @@
             <article><span>3</span><h3>Review the Results</h3><p>See the result, score, suspicious reasons, and recommended action.</p></article>
           </div>
         </section>
-      </section>
 
-      <section id="check-view" class="view">
-        <div class="check-shell">
-          <a class="back-link" href="#home">← Back to Homepage</a>
+        <section id="scam-types" class="home-section" aria-labelledby="scam-types-title">
           <div class="section-heading center">
-            <p class="eyebrow">Check for scams</p>
-            <h1>Check for Scams</h1>
-            <p>Choose your input method and submit content for analysis.</p>
+            <p class="eyebrow">Scam types</p>
+            <h2 id="scam-types-title">Common patterns VETO highlights</h2>
           </div>
-
-          <section class="analysis-panel" aria-labelledby="check-title">
-            <div class="section-heading">
-              <h2 id="check-title">Submit suspicious content</h2>
-              <p>
-                The prototype converts each input type into text, then uses the
-                same machine learning classifier flow.
-              </p>
-            </div>
-
-            <div class="tab-list" role="tablist" aria-label="Input type">
-              <button class="tab active" data-tab="text" type="button">Text</button>
-              <button class="tab" data-tab="image" type="button">Image</button>
-              <button class="tab" data-tab="voice" type="button">Voice</button>
-              <button class="tab" data-tab="url" type="button">URL</button>
-            </div>
-
-            <form id="check-form" class="check-form">
-              <div class="tab-panel active" data-panel="text">
-                <label for="text-input">Suspicious message</label>
-                <textarea
-                  id="text-input"
-                  rows="8"
-                  placeholder="Enter at least 10 characters of text to analyze"
-                ></textarea>
-              </div>
-
-              <div class="tab-panel" data-panel="image">
-                <label for="image-input">Screenshot or image</label>
-                <div class="upload-box">
-                  <input id="image-input" type="file" accept="image/*" />
-                  <span>Upload an image file. OCR will extract text for scam analysis.</span>
-                </div>
-                <textarea id="image-text" rows="5" placeholder="Extracted OCR text will appear here"></textarea>
-              </div>
-
-              <div class="tab-panel" data-panel="voice">
-                <label for="voice-input">Voice recording</label>
-                <div class="upload-box">
-                  <input id="voice-input" type="file" accept="audio/*" />
-                  <span>Upload an audio file. Speech-to-text will create a transcript.</span>
-                </div>
-                <textarea id="voice-text" rows="5" placeholder="Transcribed speech will appear here"></textarea>
-              </div>
-
-              <div class="tab-panel" data-panel="url">
-                <label for="url-input">Suspicious URL or link</label>
-                <input id="url-input" type="url" placeholder="Paste suspicious link here" />
-                <textarea id="url-context" rows="5" placeholder="Optional message context around the URL"></textarea>
-              </div>
-
-              <p id="form-error" class="form-error" role="alert"></p>
-              <button class="primary-action" type="submit">Check Now</button>
-            </form>
-          </section>
-
           <div class="support-grid">
-            <article><h3>Privacy First</h3><p>Submitted content stays in this browser prototype.</p></article>
-            <article><h3>Fast Analysis</h3><p>Get a simulated scam detection result within seconds.</p></article>
-            <article><h3>Actionable Results</h3><p>Review risk factors and simple next-step guidance.</p></article>
+            <article><h3>OTP or Password Requests</h3><p>Messages asking for sensitive login or banking details.</p></article>
+            <article><h3>Fake Prize Claims</h3><p>Reward, parcel, and giveaway messages designed to pressure users.</p></article>
+            <article><h3>Suspicious Downloads</h3><p>Links with APK, install, download, or redirect indicators.</p></article>
           </div>
-        </div>
+        </section>
+
+        <section id="guide" class="home-section" aria-labelledby="guide-title">
+          <div class="section-heading center">
+            <p class="eyebrow">Guide</p>
+            <h2 id="guide-title">Simple action guidance</h2>
+          </div>
+          <div class="support-grid">
+            <article><h3>Low Risk</h3><p>Still verify the sender if unsure.</p></article>
+            <article><h3>Medium Risk</h3><p>Do not respond until checking through an official channel.</p></article>
+            <article><h3>High Risk</h3><p>Ignore, block, and report. Never share OTP or passwords.</p></article>
+          </div>
+        </section>
       </section>
 
       <section id="result-view" class="view">

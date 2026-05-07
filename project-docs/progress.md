@@ -23,3 +23,10 @@
 - Added `assets/logo.png` from `Power.png` and `assets/hero.png` from `Power-2.png`.
 - Reworked the landing page to show the VETO logo, document-style navigation, branded hero image, feature cards, and how-it-works steps before the check workspace.
 - Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`, `/assets/logo.png`, and `/assets/hero.png`.
+
+## 2026-05-07
+
+- Moved the functional checking panel into the homepage hero to match the provided VETO homepage reference.
+- Updated top navigation to `Features`, `How it Works`, `Scam Types`, `Guide`, `View History`, and a `Check Now` button.
+- Changed `#check` routing so it stays on the homepage and scrolls to the checking panel instead of opening a separate check page.
+- Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`, `/assets/logo.png`, and `/assets/hero.png`.

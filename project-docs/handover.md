@@ -9,6 +9,7 @@
 - The current scam detection frontend lives in `scam-detection-web/` and can be opened directly from `index.html`.
 - The app is a frontend flow prototype. OCR, STT, URL safety checks, classifier scoring, and admin metrics are simulated in `app.js`.
 - The VETO logo and hero illustration are copied into `scam-detection-web/assets/` so the prototype no longer depends on files outside the repo.
+- The homepage hero now contains the real checking panel; `#check` routes back to the homepage panel rather than a separate check page.
 
 ## Open Items
 

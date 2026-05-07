@@ -126,12 +126,17 @@ const classifyContent = ({ type, text, url }) => {
 };
 
 const routeMap = {
+  check: "home",
   features: "home",
   "how-it-works": "home",
+  "scam-types": "home",
+  guide: "home",
   privacy: "privacy",
   terms: "terms",
   ai: "about",
 };
+
+const scrollTargets = new Set(["check", "features", "how-it-works", "scam-types", "guide"]);
 
 const showView = (rawName) => {
   const name = routeMap[rawName] || rawName || "home";
@@ -139,8 +144,9 @@ const showView = (rawName) => {
   const target = document.querySelector(`#${name}-view`) || document.querySelector("#home-view");
   target.classList.add("active");
   if (name === "history") renderHistory();
-  if (rawName === "features" || rawName === "how-it-works") {
-    setTimeout(() => document.querySelector(`#${rawName}`)?.scrollIntoView({ behavior: "smooth" }), 0);
+  if (scrollTargets.has(rawName)) {
+    const targetId = rawName === "check" ? "home-check-panel" : rawName;
+    setTimeout(() => document.querySelector(`#${targetId}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
     return;
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
