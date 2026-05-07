@@ -202,22 +202,35 @@ textarea {
 
 .home-section,
 .check-shell {
-  max-width: 1180px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 46px 24px;
+  padding: 86px 24px;
 }
 
 .section-heading.center {
-  max-width: 760px;
-  margin: 0 auto 26px;
+  max-width: 880px;
+  margin: 0 auto 48px;
   text-align: center;
+}
+
+.section-heading.center h2 {
+  color: #111827;
+  font-size: clamp(2.45rem, 4.2vw, 3.9rem);
+  line-height: 1.08;
+  margin-bottom: 18px;
+}
+
+.section-heading.center p {
+  color: #536072;
+  font-size: clamp(1.02rem, 1.3vw, 1.25rem);
+  line-height: 1.55;
 }
 
 .feature-grid,
 .support-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 32px;
 }
 
 .support-grid {
@@ -228,22 +241,74 @@ textarea {
 .feature-grid article,
 .support-grid article {
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   background: white;
   padding: 22px;
-  box-shadow: 0 14px 34px rgba(24, 37, 56, 0.06);
+  box-shadow: 0 14px 30px rgba(24, 37, 56, 0.08);
 }
 
-.feature-grid span {
+.feature-grid .feature-card {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 34px 28px;
+  text-align: center;
+}
+
+.feature-card h3 {
+  margin: 4px 0 4px;
+  color: #141b2a;
+  font-size: 1.33rem;
+}
+
+.feature-card p {
+  max-width: 250px;
+  margin: 0 auto;
+  color: #536072;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.feature-grid .feature-icon {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 16px;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 8px;
   border-radius: 50%;
-  color: var(--primary);
-  background: #eaf3ff;
-  font-weight: 900;
+}
+
+.feature-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-text {
+  color: #2f7cff;
+  background: #e8f0ff;
+}
+
+.icon-image {
+  color: #31ad58;
+  background: #dcf9e5;
+}
+
+.icon-voice {
+  color: #9747ff;
+  background: #f0e4ff;
+}
+
+.icon-url {
+  color: #f26a00;
+  background: #fff0d8;
 }
 
 .check-shell .analysis-panel {

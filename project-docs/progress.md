@@ -30,3 +30,10 @@
 - Updated top navigation to `Features`, `How it Works`, `Scam Types`, `Guide`, `View History`, and a `Check Now` button.
 - Changed `#check` routing so it stays on the homepage and scrolls to the checking panel instead of opening a separate check page.
 - Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`, `/assets/logo.png`, and `/assets/hero.png`.
+
+## 2026-05-07
+
+- Updated the homepage `Our Features` section to match the provided reference layout.
+- Replaced text-based feature markers with centered circular icon treatments for Text Analysis, Image Scanning, Voice Recognition, and URL Verification.
+- Adjusted feature heading, subtitle, card spacing, card shadows, and card copy to follow the reference screenshot.
+- Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.
