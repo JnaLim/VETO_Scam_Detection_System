@@ -489,6 +489,14 @@ textarea {
   gap: 28px;
 }
 
+.guide-panel {
+  display: none;
+}
+
+.guide-panel.active {
+  display: grid;
+}
+
 .security-guide-card {
   position: relative;
   min-height: 276px;
@@ -550,6 +558,42 @@ textarea {
 }
 
 .guide-email .guide-card-heading span {
+  background: #fff0e6;
+  color: #c97b40;
+}
+
+.guide-bank {
+  border-color: #cfe3ff;
+}
+
+.guide-card-protection {
+  border-color: #f5dda5;
+}
+
+.guide-loan {
+  border-color: #e4d4ff;
+}
+
+.guide-call {
+  border-color: #f2d6bf;
+}
+
+.guide-bank .guide-card-heading span {
+  background: #edf4ff;
+  color: #367cff;
+}
+
+.guide-card-protection .guide-card-heading span {
+  background: #fff2d3;
+  color: #d99a16;
+}
+
+.guide-loan .guide-card-heading span {
+  background: #f2e9ff;
+  color: #8a3ffc;
+}
+
+.guide-call .guide-card-heading span {
   background: #fff0e6;
   color: #c97b40;
 }

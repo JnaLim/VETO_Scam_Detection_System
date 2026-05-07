@@ -63,3 +63,10 @@
 - Kept the existing homepage guide/recovery section unchanged.
 - Updated routing so `Guide` opens the new page instead of scrolling back to the homepage.
 - Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.
+
+## 2026-05-07
+
+- Made the standalone Guide page tabs interactive.
+- `Platform Guides` shows WhatsApp, SMS, Social Media, and Email guide cards.
+- `Banking Guides` shows Online Banking Login Safety, Card & Transaction Protection, Loan & Investment Scam Awareness, and Bank Call & OTP Scam Defense cards.
+- Verification: served the app with `python3 -m http.server 4173` and confirmed `HTTP/1.0 200 OK` for `/`.

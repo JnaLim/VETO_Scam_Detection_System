@@ -277,6 +277,18 @@ document.querySelectorAll(".tab").forEach((button) => {
   button.addEventListener("click", () => setActiveTab(button.dataset.tab));
 });
 
+document.querySelectorAll("[data-guide-tab]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedTab = button.dataset.guideTab;
+    document.querySelectorAll("[data-guide-tab]").forEach((tab) => {
+      tab.classList.toggle("active", tab.dataset.guideTab === selectedTab);
+    });
+    document.querySelectorAll("[data-guide-panel]").forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.guidePanel === selectedTab);
+    });
+  });
+});
+
 document.querySelector("#image-input").addEventListener("change", (event) => {
   if (event.target.files[0]) {
     document.querySelector("#image-text").value =

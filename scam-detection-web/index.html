@@ -221,10 +221,10 @@
         <div class="guide-page">
           <h1>Security Guides &amp; Anti-Fraud Center</h1>
           <div class="guide-tabs" aria-label="Guide categories">
-            <button class="active" type="button">♢ Platform Guides</button>
-            <button type="button">▥ Banking Guides</button>
+            <button class="active" type="button" data-guide-tab="platform">♢ Platform Guides</button>
+            <button type="button" data-guide-tab="banking">▥ Banking Guides</button>
           </div>
-          <div class="guide-card-grid">
+          <div class="guide-card-grid guide-panel active" data-guide-panel="platform">
             <article class="security-guide-card guide-whatsapp">
               <div class="guide-card-heading">
                 <span>○</span>
@@ -270,6 +270,56 @@
                 <li>Inspect sender address.</li>
                 <li>Scan all attachments.</li>
                 <li>Recognize common red flags.</li>
+              </ul>
+              <button type="button">Learn</button>
+            </article>
+          </div>
+          <div class="guide-card-grid guide-panel" data-guide-panel="banking">
+            <article class="security-guide-card guide-bank">
+              <div class="guide-card-heading">
+                <span>▥</span>
+                <h2>Online Banking Login Safety</h2>
+              </div>
+              <ul>
+                <li>Use only official apps or websites.</li>
+                <li>Avoid login links from messages.</li>
+                <li>Check account activity notifications.</li>
+              </ul>
+              <button type="button">Learn</button>
+            </article>
+            <article class="security-guide-card guide-card-protection">
+              <div class="guide-card-heading">
+                <span>▭</span>
+                <h2>Card &amp; Transaction Protection</h2>
+              </div>
+              <ul>
+                <li>Review transactions regularly.</li>
+                <li>Enable spending alerts.</li>
+                <li>Never share PIN or CVV.</li>
+              </ul>
+              <button type="button">Learn</button>
+            </article>
+            <article class="security-guide-card guide-loan">
+              <div class="guide-card-heading">
+                <span>▣</span>
+                <h2>Loan &amp; Investment Scam Awareness</h2>
+              </div>
+              <ul>
+                <li>Question guaranteed returns.</li>
+                <li>Verify financial institutions.</li>
+                <li>Avoid upfront processing fees.</li>
+              </ul>
+              <button type="button">Learn</button>
+            </article>
+            <article class="security-guide-card guide-call">
+              <div class="guide-card-heading">
+                <span>☏</span>
+                <h2>Bank Call &amp; OTP Scam Defense</h2>
+              </div>
+              <ul>
+                <li>Do not share OTP over calls.</li>
+                <li>Verify the caller independently.</li>
+                <li>Report suspicious banking calls.</li>
               </ul>
               <button type="button">Learn</button>
             </article>
