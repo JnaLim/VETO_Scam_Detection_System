@@ -50,27 +50,35 @@
                 </div>
 
                 <div class="tab-panel" data-panel="image">
-                  <label for="image-input">Upload Suspicious Image</label>
-                  <div class="upload-box">
+                  <label for="image-input">Upload Image</label>
+                  <div class="upload-box upload-dropzone">
                     <input id="image-input" data-input="image-file" type="file" accept="image/*" />
-                    <span>Upload a screenshot. OCR will extract text for scam analysis.</span>
+                    <span class="upload-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2" /><circle cx="9" cy="10" r="1.5" /><path d="M7 17l4-4 3 3 2-2 2 3" /></svg>
+                    </span>
+                    <strong>Drag and drop an image here, or click to select</strong>
+                    <small>Supports OCR text extraction from images</small>
                   </div>
-                  <textarea id="image-text" data-input="image-text" rows="4" placeholder="Extracted OCR text will appear here"></textarea>
+                  <textarea id="image-text" data-input="image-text" rows="4" placeholder="Extracted OCR text will appear here" hidden></textarea>
                 </div>
 
                 <div class="tab-panel" data-panel="voice">
-                  <label for="voice-input">Upload Suspicious Voice Recording</label>
-                  <div class="upload-box">
+                  <label for="voice-input">Upload Voice Recording</label>
+                  <div class="upload-box upload-dropzone">
                     <input id="voice-input" data-input="voice-file" type="file" accept="audio/*" />
-                    <span>Upload an audio file. Speech-to-text will create a transcript.</span>
+                    <span class="upload-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 4a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V7a3 3 0 0 0-3-3z" /><path d="M6 11a6 6 0 0 0 12 0M12 17v3M9 20h6" /></svg>
+                    </span>
+                    <strong>Drag and drop an audio file here, or click to select</strong>
+                    <small>Supports speech-to-text conversion for voice messages</small>
                   </div>
-                  <textarea id="voice-text" data-input="voice-text" rows="4" placeholder="Transcribed speech will appear here"></textarea>
+                  <textarea id="voice-text" data-input="voice-text" rows="4" placeholder="Transcribed speech will appear here" hidden></textarea>
                 </div>
 
                 <div class="tab-panel" data-panel="url">
                   <label for="url-input">Enter Suspicious URL</label>
-                  <input id="url-input" data-input="url" type="url" placeholder="Paste suspicious link here" />
-                  <textarea id="url-context" data-input="url-context" rows="4" placeholder="Optional message context around the URL"></textarea>
+                  <input id="url-input" data-input="url" type="url" placeholder="https://example.com" />
+                  <textarea id="url-context" data-input="url-context" rows="4" placeholder="Optional message context around the URL" hidden></textarea>
                 </div>
 
                 <p id="form-error" class="form-error" role="alert"></p>

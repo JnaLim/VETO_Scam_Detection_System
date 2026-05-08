@@ -1332,6 +1332,53 @@ input:focus {
   color: var(--muted);
 }
 
+.upload-dropzone {
+  position: relative;
+  min-height: 178px;
+  border: 2px dashed #cfd6df;
+  background: #fafcff;
+  cursor: pointer;
+}
+
+.upload-dropzone input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: #98a3b3;
+}
+
+.upload-icon svg {
+  width: 46px;
+  height: 46px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.upload-dropzone strong {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.upload-dropzone small {
+  color: #737a8a;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
 .primary-action,
 .secondary-action {
   border: 0;
@@ -1362,10 +1409,35 @@ input:focus {
 }
 
 .form-error {
-  min-height: 24px;
-  margin: 12px 0 0;
-  color: var(--danger);
-  font-weight: 700;
+  display: none;
+}
+
+.form-error:not(:empty) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  margin: 18px 0 0;
+  padding: 0 18px;
+  border: 1px solid #ffb8b8;
+  border-radius: 10px;
+  background: #fff1f1;
+  color: #c82b2b;
+  font-weight: 800;
+}
+
+.form-error:not(:empty)::before {
+  content: "!";
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff3b3b;
+  border-radius: 50%;
+  color: #ff3b3b;
+  font-size: 0.82rem;
+  font-weight: 900;
 }
 
 .flow-strip,

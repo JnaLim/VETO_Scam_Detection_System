@@ -340,14 +340,15 @@ const getInputPayload = (form) => {
   const type = state.activeTab;
   if (type === "text") {
     const text = form.querySelector('[data-input="text"]').value.trim();
-    if (text.length < 10) throw new Error("Please enter at least 10 characters of text.");
+    if (!text) throw new Error("Please enter some text before checking.");
+    if (text.length < 10) throw new Error("Please enter at least 10 characters of text to analyze.");
     return { type, text };
   }
 
   if (type === "image") {
     const file = form.querySelector('[data-input="image-file"]').files[0];
     const text = form.querySelector('[data-input="image-text"]').value.trim();
-    if (!file) throw new Error("Please upload an image file.");
+    if (!file) throw new Error("Please upload an image before checking.");
     if (!text) throw new Error("OCR text is empty. Review the extracted text first.");
     return { type, text };
   }
@@ -355,14 +356,14 @@ const getInputPayload = (form) => {
   if (type === "voice") {
     const file = form.querySelector('[data-input="voice-file"]').files[0];
     const text = form.querySelector('[data-input="voice-text"]').value.trim();
-    if (!file) throw new Error("Please upload an audio file.");
+    if (!file) throw new Error("Please upload a voice file before checking.");
     if (!text) throw new Error("STT transcript is empty. Review the transcript first.");
     return { type, text };
   }
 
   const url = form.querySelector('[data-input="url"]').value.trim();
   const context = form.querySelector('[data-input="url-context"]').value.trim();
-  if (!url) throw new Error("Please enter a URL.");
+  if (!url) throw new Error("Please enter a URL before checking.");
   return { type, text: `${context} ${url}`.trim(), url };
 };
 
