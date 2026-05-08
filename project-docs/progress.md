@@ -104,3 +104,10 @@
 - Replaced the old short Terms of Service content with the provided long-form terms page layout.
 - Added the document hero, legal sections, separators, contact information, and Important Disclaimer panel.
 - Verification: served the app with `python3 -m http.server 4173`, confirmed `HTTP/1.0 200 OK` for `/`, and checked the served HTML contains the Terms of Service view, key sections, and Important Disclaimer.
+
+## 2026-05-08
+
+- Changed the header `Check Now` route from scrolling back to the homepage panel to opening a standalone `Check for Scams` page at `#check`.
+- Added the new full-width checking page with input tabs, analysis form, three benefit cards, and safety note.
+- Updated the checking form logic so both the homepage panel and standalone check page can submit through the same classifier flow.
+- Verification: served the app with `python3 -m http.server 4173`, confirmed `HTTP/1.0 200 OK` for `/`, and checked the served HTML contains the new check view, full check form, header route, and benefit cards.
