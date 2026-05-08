@@ -31,6 +31,89 @@ const highRiskTerms = new Set([
 
 const suspiciousDomains = ["bit.ly", "tinyurl", "t.co", "grab-prize", "verify-login"];
 
+const scamTypeDetails = {
+  romance: {
+    title: "Romance Scam",
+    summary: "Scammers build fake emotional relationships to gain trust and ask for money.",
+    details: [
+      "The scammer pretends to be caring, loving, and serious about the relationship.",
+      "They often avoid real-life meetings or video calls and create excuses.",
+      "After trust is built, they ask for money due to emergencies, travel issues, or investments.",
+      "Victims are pressured to act quickly and keep the relationship private.",
+    ],
+  },
+  phishing: {
+    title: "Phishing",
+    summary: "Fake emails, texts, or websites are used to steal login credentials and personal data.",
+    details: [
+      "Messages often look official and may copy trusted brands or services.",
+      "They ask you to click a link, verify an account, or update payment information.",
+      "The fake page is designed to capture usernames, passwords, or card details.",
+      "Always check the sender, URL, and spelling before interacting.",
+    ],
+  },
+  "customer-service": {
+    title: "Customer Service Scam",
+    summary: "Fraudsters pose as support teams or fake sellers to trick users into making payments.",
+    details: [
+      "They claim there is a problem with your order or account.",
+      "They may ask you to pay extra fees, share OTP codes, or install remote apps.",
+      "The message often looks urgent to stop you from thinking carefully.",
+      "Always verify directly through the official app or website.",
+    ],
+  },
+  lottery: {
+    title: "Lottery",
+    summary: "Victims are told they won a prize but must pay fees or provide details first.",
+    details: [
+      "You are informed that you won a lottery or reward you never entered.",
+      "The scammer asks for processing fees, tax payments, or personal information.",
+      "The goal is to steal money or sensitive identity data.",
+      "Legitimate prize providers do not usually require advance payment to claim winnings.",
+    ],
+  },
+  bank: {
+    title: "Bank Scam",
+    summary: "Fraudsters impersonate bank staff through calls, text messages, or fake alerts.",
+    details: [
+      "They claim your account is blocked, hacked, or involved in suspicious activity.",
+      "They create urgency and ask for OTP, TAC, password, or banking details.",
+      "Some send fake links that look like official bank websites.",
+      "Real banks do not ask for sensitive credentials through random calls or messages.",
+    ],
+  },
+  shopping: {
+    title: "Shopping Scam",
+    summary: "Fake online shops offer attractive deals but deliver nothing or poor-quality items.",
+    details: [
+      "Scammers use very low prices to attract buyers quickly.",
+      "They may use stolen product images and fake reviews.",
+      "Payment is usually requested through risky or irreversible methods.",
+      "After payment, the seller may disappear, delay shipping, or send the wrong item.",
+    ],
+  },
+  delivery: {
+    title: "Delivery Scams",
+    summary: "Fake shipping notifications ask victims to pay fees or install malicious software.",
+    details: [
+      "You may receive a message saying your parcel cannot be delivered.",
+      "It often includes a suspicious link to pay a small fee or confirm delivery.",
+      "Some links lead to phishing pages or malware downloads.",
+      "Check delivery status only through the courier's official website or app.",
+    ],
+  },
+  charity: {
+    title: "Charity",
+    summary: "Scammers exploit sympathy by pretending to raise funds for emergencies or relief efforts.",
+    details: [
+      "They use emotional stories, disaster relief claims, or fake medical cases.",
+      "Photos and stories may be stolen from real situations.",
+      "Victims are pressured to donate immediately without checking authenticity.",
+      "Always verify the charity or fundraiser through trusted official channels.",
+    ],
+  },
+};
+
 const getHistory = () => {
   const raw = localStorage.getItem("scam-detection-history");
   if (!raw) return [];
@@ -325,6 +408,37 @@ document.querySelectorAll("[data-faq-toggle]").forEach((button) => {
       button.setAttribute("aria-expanded", "true");
     }
   });
+});
+
+const scamModal = document.querySelector("#scam-modal");
+const closeScamModal = () => {
+  scamModal.hidden = true;
+  document.body.classList.remove("modal-open");
+};
+
+document.querySelectorAll("[data-scam-learn]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const detail = scamTypeDetails[button.dataset.scamLearn];
+    if (!detail) return;
+
+    document.querySelector("#scam-modal-title").textContent = detail.title;
+    document.querySelector("#scam-modal-summary").textContent = detail.summary;
+    document.querySelector("#scam-modal-details").innerHTML = detail.details
+      .map((item) => `<li>${item}</li>`)
+      .join("");
+    scamModal.hidden = false;
+    document.body.classList.add("modal-open");
+  });
+});
+
+document.querySelectorAll("[data-scam-close]").forEach((button) => {
+  button.addEventListener("click", closeScamModal);
+});
+
+document.querySelector("#scam-start-analysis").addEventListener("click", closeScamModal);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !scamModal.hidden) closeScamModal();
 });
 
 document.querySelectorAll("[data-check-form]").forEach((form) => {

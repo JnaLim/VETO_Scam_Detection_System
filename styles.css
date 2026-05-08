@@ -438,6 +438,145 @@ textarea {
   text-align: center;
 }
 
+.modal-open {
+  overflow: hidden;
+}
+
+.scam-modal[hidden] {
+  display: none;
+}
+
+.scam-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 96px 24px 36px;
+}
+
+.scam-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.54);
+  backdrop-filter: blur(1px);
+}
+
+.scam-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(930px, 100%);
+  overflow: hidden;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 28px 90px rgba(15, 23, 42, 0.35);
+}
+
+.scam-modal-header {
+  padding: 28px 34px 30px;
+  background: linear-gradient(120deg, #244b72, #456798);
+  color: white;
+}
+
+.scam-modal-header h2 {
+  margin: 0 0 10px;
+  color: white;
+  font-size: clamp(1.9rem, 3vw, 2.35rem);
+}
+
+.scam-modal-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.scam-modal-body {
+  padding: 34px;
+}
+
+.scam-modal-summary {
+  margin: 0 0 28px;
+  color: #344258;
+  font-size: clamp(1.1rem, 1.6vw, 1.32rem);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.scam-detail-box {
+  padding: 28px 30px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.scam-detail-box h3 {
+  margin: 0 0 22px;
+  color: #111827;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+}
+
+.scam-detail-box ul {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scam-detail-box li {
+  position: relative;
+  padding-left: 32px;
+  color: #344258;
+  font-size: clamp(1.06rem, 1.5vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.scam-detail-box li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+}
+
+.scam-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.modal-secondary,
+.modal-primary {
+  min-width: 112px;
+  min-height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-secondary {
+  border: 1px solid #cfd8e6;
+  background: white;
+  color: #344258;
+}
+
+.modal-primary {
+  border: 0;
+  background: var(--brand-blue);
+  color: white;
+}
+
 .guide-page {
   max-width: 1580px;
   margin: 0 auto;
@@ -1981,6 +2120,28 @@ input:focus {
   .scam-type-card {
     grid-template-columns: 1fr;
     align-items: start;
+  }
+
+  .scam-modal {
+    padding: 86px 14px 24px;
+  }
+
+  .scam-modal-header,
+  .scam-modal-body {
+    padding: 24px;
+  }
+
+  .scam-detail-box {
+    padding: 22px;
+  }
+
+  .scam-modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-secondary,
+  .modal-primary {
+    width: 100%;
   }
 
   .guide-tabs {

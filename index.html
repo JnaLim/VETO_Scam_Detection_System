@@ -259,47 +259,68 @@
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">♡</span>
               <div><h2>Romance Scam</h2><p>Scammers build fake emotional relationships to gain trust and ask for money.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="romance">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">▥</span>
               <div><h2>Bank Scam</h2><p>Fraudsters impersonate bank staff through calls, text messages, or fake alerts.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="bank">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">✉</span>
               <div><h2>Phishing</h2><p>Fake emails, texts, or websites are used to steal login credentials and personal data.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="phishing">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">🛒</span>
               <div><h2>Shopping Scam</h2><p>Fake online shops offer attractive deals but deliver nothing or poor-quality items.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="shopping">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">♜</span>
               <div><h2>Customer Service Scam</h2><p>Fraudsters pose as support teams or fake sellers to trick users into making payments.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="customer-service">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">▣</span>
               <div><h2>Delivery Scams</h2><p>Fake shipping notifications ask victims to pay fees or install malicious software.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="delivery">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">🎟</span>
               <div><h2>Lottery</h2><p>Victims are told they won a prize but must pay fees or provide details first.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="lottery">Learn</button>
             </article>
             <article class="scam-type-card">
               <span class="scam-type-icon" aria-hidden="true">☼</span>
               <div><h2>Charity</h2><p>Scammers exploit sympathy by pretending to raise funds for emergencies or relief efforts.</p></div>
-              <button type="button">Learn</button>
+              <button type="button" data-scam-learn="charity">Learn</button>
             </article>
           </div>
           <p class="mechanics-note">Stay vigilant. Take control. Verified authorities are here to support you.</p>
         </div>
       </section>
+
+      <div id="scam-modal" class="scam-modal" hidden>
+        <div class="scam-modal-backdrop" data-scam-close></div>
+        <section class="scam-modal-card" role="dialog" aria-modal="true" aria-labelledby="scam-modal-title">
+          <header class="scam-modal-header">
+            <h2 id="scam-modal-title"></h2>
+            <p>Detailed explanation of how this scam usually works.</p>
+          </header>
+          <div class="scam-modal-body">
+            <p id="scam-modal-summary" class="scam-modal-summary"></p>
+            <section class="scam-detail-box">
+              <h3>Scam Details</h3>
+              <ul id="scam-modal-details"></ul>
+            </section>
+            <div class="scam-modal-actions">
+              <button class="modal-secondary" type="button" data-scam-close>Close</button>
+              <a class="modal-primary" href="#check" id="scam-start-analysis">Start Analysis</a>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <section id="guide-view" class="view">
         <div class="guide-page">
