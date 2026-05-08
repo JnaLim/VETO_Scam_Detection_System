@@ -114,6 +114,105 @@ const scamTypeDetails = {
   },
 };
 
+const guideDetails = {
+  whatsapp: {
+    title: "WhatsApp Security Guides",
+    summary:
+      "Learn how to reduce scam risks on WhatsApp by improving privacy settings, recognizing suspicious media, and avoiding contact-based tricks.",
+    details: [
+      "Enable two-step verification to reduce the risk of account takeover.",
+      "Be careful with unknown images, links, and forwarded messages that create urgency.",
+      "Ignore group invites from unknown contacts or suspicious business accounts.",
+      "Do not share OTP codes, verification codes, or account recovery messages with anyone.",
+      "Always verify payment requests or urgent stories through another trusted channel.",
+    ],
+  },
+  social: {
+    title: "Social Media Account Safety",
+    summary:
+      "Protect your social media accounts from impersonation, fake giveaways, account takeover attempts, and suspicious login activity.",
+    details: [
+      "Watch for impersonation scams that copy friend, influencer, or brand accounts.",
+      "Review recent login activity and remove devices you do not recognize.",
+      "Use strong passwords and enable extra security settings like two-factor authentication.",
+      "Be careful with giveaway links, fake support accounts, and DM-based payment requests.",
+      "Avoid logging into social platforms through unknown third-party links.",
+    ],
+  },
+  sms: {
+    title: "SMS Fraud Prevention",
+    summary:
+      "Understand common SMS scam tactics such as fake delivery alerts, account warnings, and phishing links that try to steal personal or banking details.",
+    details: [
+      "Do not click links in unexpected SMS messages, especially those claiming account issues or parcel delays.",
+      "Check the sender carefully because scammers often imitate official names.",
+      "Never share verification codes, TAC numbers, or banking login details through SMS or chat.",
+      "Be cautious with urgent language like 'account suspended' or 'immediate action required'.",
+      "When in doubt, open the official app or contact the real company directly.",
+    ],
+  },
+  email: {
+    title: "Email Phishing Defense",
+    summary:
+      "Learn how to detect phishing emails, suspicious attachments, fake sender identities, and social engineering attempts in your inbox.",
+    details: [
+      "Check the sender address carefully because fake emails often look similar to trusted domains.",
+      "Avoid opening unexpected attachments, especially invoices, password-protected files, or urgent documents.",
+      "Do not trust emails that pressure you to act immediately or threaten account suspension.",
+      "Hover over links before clicking and verify the domain destination.",
+      "Report suspicious emails and confirm sensitive requests with the official organization.",
+    ],
+  },
+  "banking-login": {
+    title: "Online Banking Login Safety",
+    summary:
+      "Stay safe when logging into online banking by avoiding fake login pages, insecure devices, and suspicious urgent prompts.",
+    details: [
+      "Always access online banking from the official app or by typing the bank website yourself.",
+      "Do not log in through links sent by SMS, email, or chat messages.",
+      "Check for suspicious design differences, unusual URLs, and missing security details.",
+      "Avoid using public Wi-Fi or shared devices for banking access.",
+      "Enable transaction notifications so you can spot unusual account activity quickly.",
+    ],
+  },
+  "loan-investment": {
+    title: "Loan & Investment Scam Awareness",
+    summary:
+      "Recognize fake loan offers, guaranteed investment returns, and scam messages pretending to be from licensed financial institutions.",
+    details: [
+      "Be suspicious of guaranteed profits, instant approvals, or offers with no verification process.",
+      "Check whether the company is properly registered before sending any payment or documents.",
+      "Do not pay upfront processing fees for loans or investment releases.",
+      "Avoid sharing payslips, IC details, banking details, or selfies with unknown agents.",
+      "Contact the financial institution directly through official channels to verify the offer.",
+    ],
+  },
+  "card-protection": {
+    title: "Card & Transaction Protection",
+    summary:
+      "Reduce the risk of card fraud by protecting card details, reviewing transactions, and spotting unauthorized charges early.",
+    details: [
+      "Do not save card details on unknown or suspicious websites.",
+      "Review your transaction history regularly for unfamiliar purchases or small test charges.",
+      "Turn on spending alerts and instant transaction notifications.",
+      "Never share CVV numbers, PINs, or TAC codes with anyone.",
+      "Freeze or block your card immediately if you suspect misuse.",
+    ],
+  },
+  "bank-call": {
+    title: "Bank Call & OTP Scam Defense",
+    summary:
+      "Prevent social engineering fraud where scammers pretend to be bank officers and pressure victims into revealing OTP or account details.",
+    details: [
+      "Banks do not ask for OTP, TAC, PIN, or full password over phone calls or chat messages.",
+      "Be cautious if the caller uses fear tactics about suspicious transactions or account blocking.",
+      "Hang up and call the bank back using the official number from the website or app.",
+      "Do not approve device binding, app reset, or transfer requests unless you initiated them yourself.",
+      "Report suspicious calls immediately and secure your account if any details were exposed.",
+    ],
+  },
+};
+
 const getHistory = () => {
   const raw = localStorage.getItem("scam-detection-history");
   if (!raw) return [];
@@ -416,18 +515,29 @@ const closeScamModal = () => {
   document.body.classList.remove("modal-open");
 };
 
+const openDetailModal = (detail) => {
+  document.querySelector("#scam-modal-title").textContent = detail.title;
+  document.querySelector("#scam-modal-summary").textContent = detail.summary;
+  document.querySelector("#scam-modal-details").innerHTML = detail.details
+    .map((item) => `<li>${item}</li>`)
+    .join("");
+  scamModal.hidden = false;
+  document.body.classList.add("modal-open");
+};
+
 document.querySelectorAll("[data-scam-learn]").forEach((button) => {
   button.addEventListener("click", () => {
     const detail = scamTypeDetails[button.dataset.scamLearn];
     if (!detail) return;
+    openDetailModal(detail);
+  });
+});
 
-    document.querySelector("#scam-modal-title").textContent = detail.title;
-    document.querySelector("#scam-modal-summary").textContent = detail.summary;
-    document.querySelector("#scam-modal-details").innerHTML = detail.details
-      .map((item) => `<li>${item}</li>`)
-      .join("");
-    scamModal.hidden = false;
-    document.body.classList.add("modal-open");
+document.querySelectorAll("[data-guide-learn]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const detail = guideDetails[button.dataset.guideLearn];
+    if (!detail) return;
+    openDetailModal(detail);
   });
 });
 
