@@ -111,3 +111,10 @@
 - Added the new full-width checking page with input tabs, analysis form, three benefit cards, and safety note.
 - Updated the checking form logic so both the homepage panel and standalone check page can submit through the same classifier flow.
 - Verification: served the app with `python3 -m http.server 4173`, confirmed `HTTP/1.0 200 OK` for `/`, and checked the served HTML contains the new check view, full check form, header route, and benefit cards.
+
+## 2026-05-08
+
+- Added Scam Types `Learn` modal behavior for all eight scam categories.
+- Each modal shows the selected scam title, summary, scam details list, Close action, and Start Analysis action.
+- `Start Analysis` now closes the modal and routes to the standalone `#check` page.
+- Verification: served the app with `python3 -m http.server 4173`, confirmed `HTTP/1.0 200 OK` for `/`, and checked the served HTML contains scam learn buttons, modal markup, Scam Details, and the `#check` Start Analysis link.
