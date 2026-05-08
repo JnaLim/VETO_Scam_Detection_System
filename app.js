@@ -115,7 +115,7 @@ const classifyContent = ({ type, text, url }) => {
 };
 
 const routeMap = {
-  check: "home",
+  check: "check",
   features: "home",
   "how-it-works": "home",
   "scam-types": "scam-types",
@@ -126,7 +126,7 @@ const routeMap = {
   ai: "about",
 };
 
-const scrollTargets = new Set(["check", "features", "how-it-works"]);
+const scrollTargets = new Set(["features", "how-it-works"]);
 
 const showView = (rawName) => {
   const name = routeMap[rawName] || rawName || "home";
@@ -135,8 +135,7 @@ const showView = (rawName) => {
   target.classList.add("active");
   if (name === "history") renderHistory();
   if (scrollTargets.has(rawName)) {
-    const targetId = rawName === "check" ? "home-check-panel" : rawName;
-    setTimeout(() => document.querySelector(`#${targetId}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
+    setTimeout(() => document.querySelector(`#${rawName}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
     return;
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -150,35 +149,37 @@ const setActiveTab = (tab) => {
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.dataset.panel === tab);
   });
-  document.querySelector("#form-error").textContent = "";
+  document.querySelectorAll(".form-error").forEach((error) => {
+    error.textContent = "";
+  });
 };
 
-const getInputPayload = () => {
+const getInputPayload = (form) => {
   const type = state.activeTab;
   if (type === "text") {
-    const text = document.querySelector("#text-input").value.trim();
+    const text = form.querySelector('[data-input="text"]').value.trim();
     if (text.length < 10) throw new Error("Please enter at least 10 characters of text.");
     return { type, text };
   }
 
   if (type === "image") {
-    const file = document.querySelector("#image-input").files[0];
-    const text = document.querySelector("#image-text").value.trim();
+    const file = form.querySelector('[data-input="image-file"]').files[0];
+    const text = form.querySelector('[data-input="image-text"]').value.trim();
     if (!file) throw new Error("Please upload an image file.");
     if (!text) throw new Error("OCR text is empty. Review the extracted text first.");
     return { type, text };
   }
 
   if (type === "voice") {
-    const file = document.querySelector("#voice-input").files[0];
-    const text = document.querySelector("#voice-text").value.trim();
+    const file = form.querySelector('[data-input="voice-file"]').files[0];
+    const text = form.querySelector('[data-input="voice-text"]').value.trim();
     if (!file) throw new Error("Please upload an audio file.");
     if (!text) throw new Error("STT transcript is empty. Review the transcript first.");
     return { type, text };
   }
 
-  const url = document.querySelector("#url-input").value.trim();
-  const context = document.querySelector("#url-context").value.trim();
+  const url = form.querySelector('[data-input="url"]').value.trim();
+  const context = form.querySelector('[data-input="url-context"]').value.trim();
   if (!url) throw new Error("Please enter a URL.");
   return { type, text: `${context} ${url}`.trim(), url };
 };
@@ -326,36 +327,38 @@ document.querySelectorAll("[data-faq-toggle]").forEach((button) => {
   });
 });
 
-document.querySelector("#image-input").addEventListener("change", (event) => {
-  if (event.target.files[0]) {
-    document.querySelector("#image-text").value =
-      "Congratulations! You have won a special reward. Verify your account details now to claim it.";
-  }
-});
+document.querySelectorAll("[data-check-form]").forEach((form) => {
+  form.querySelector('[data-input="image-file"]').addEventListener("change", (event) => {
+    if (event.target.files[0]) {
+      form.querySelector('[data-input="image-text"]').value =
+        "Congratulations! You have won a special reward. Verify your account details now to claim it.";
+    }
+  });
 
-document.querySelector("#voice-input").addEventListener("change", (event) => {
-  if (event.target.files[0]) {
-    document.querySelector("#voice-text").value =
-      "Hello, this is an urgent notice from your bank. Your account may be suspended unless you confirm your details immediately.";
-  }
-});
+  form.querySelector('[data-input="voice-file"]').addEventListener("change", (event) => {
+    if (event.target.files[0]) {
+      form.querySelector('[data-input="voice-text"]').value =
+        "Hello, this is an urgent notice from your bank. Your account may be suspended unless you confirm your details immediately.";
+    }
+  });
 
-document.querySelector("#check-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const error = document.querySelector("#form-error");
-  error.textContent = "";
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const error = form.querySelector(".form-error");
+    error.textContent = "";
 
-  try {
-    const payload = getInputPayload();
-    const result = classifyContent(payload);
-    state.latestResult = result;
-    const history = [result, ...getHistory()].slice(0, 20);
-    saveHistory(history);
-    renderResult(result);
-    location.hash = "result";
-  } catch (err) {
-    error.textContent = err.message;
-  }
+    try {
+      const payload = getInputPayload(form);
+      const result = classifyContent(payload);
+      state.latestResult = result;
+      const history = [result, ...getHistory()].slice(0, 20);
+      saveHistory(history);
+      renderResult(result);
+      location.hash = "result";
+    } catch (err) {
+      error.textContent = err.message;
+    }
+  });
 });
 
 document.querySelector("#history-list").addEventListener("click", (event) => {
