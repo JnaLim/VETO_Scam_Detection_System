@@ -992,53 +992,113 @@ textarea {
 }
 
 .check-page {
-  max-width: 1700px;
+  max-width: 1380px;
   margin: 0 auto;
-  padding: 0 clamp(28px, 7vw, 150px) 72px;
+  padding: 0 clamp(24px, 4vw, 42px) 72px;
 }
 
 .check-page-heading {
-  padding: 0 0 44px;
+  padding: 38px 0 38px;
   text-align: center;
 }
 
 .check-page-heading h1 {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--brand-blue);
-  font-size: clamp(3.2rem, 5vw, 4.7rem);
+  font-size: clamp(3rem, 4.2vw, 4rem);
   line-height: 1.02;
 }
 
 .check-page-heading p {
   margin: 0;
   color: #536075;
-  font-size: clamp(1.15rem, 1.55vw, 1.45rem);
+  font-size: clamp(1.08rem, 1.35vw, 1.28rem);
   font-weight: 650;
 }
 
 .full-check {
-  padding: 30px;
+  padding: 22px;
   border-radius: 12px;
 }
 
+.full-check .tab-list {
+  margin-bottom: 34px;
+  padding: 6px;
+  border-radius: 9px;
+}
+
+.full-check .tab {
+  min-height: 44px;
+  border-radius: 9px;
+  font-size: 0.95rem;
+}
+
+.full-check .tab-panel.active {
+  gap: 16px;
+}
+
+.full-check label {
+  font-size: 0.98rem;
+}
+
 .full-check textarea {
-  min-height: 174px;
-  font-size: 1.05rem;
+  min-height: 164px;
+  font-size: 1rem;
+}
+
+.full-check input[type="url"] {
+  min-height: 40px;
+  padding: 10px 14px;
+}
+
+.full-check .upload-dropzone {
+  min-height: 138px;
+  border-width: 2px;
+  border-color: #cbd5e1;
+  background: #fafcff;
+}
+
+.full-check .upload-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.full-check .upload-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.full-check .upload-dropzone strong {
+  font-size: 0.96rem;
+}
+
+.full-check .upload-dropzone small {
+  font-size: 0.84rem;
+}
+
+.hidden-analysis-text {
+  display: none;
+}
+
+.full-check .primary-action {
+  min-height: 52px;
+  margin-top: 22px;
+  font-size: 1rem;
 }
 
 .check-benefit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  margin-top: 42px;
+  margin-top: 34px;
 }
 
 .check-benefit-grid article {
-  min-height: 180px;
+  min-height: 146px;
   display: grid;
   place-items: center;
-  gap: 10px;
-  padding: 26px 22px;
+  gap: 8px;
+  padding: 20px 22px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: white;
@@ -1049,16 +1109,16 @@ textarea {
 .check-benefit-icon {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #dceaff;
   color: #244e9a;
 }
 
 .check-benefit-icon svg {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -1067,22 +1127,22 @@ textarea {
 }
 
 .check-benefit-grid h2 {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: #111827;
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 
 .check-benefit-grid p {
   margin: 0;
   color: #536075;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .check-page-note {
-  margin: 46px 0 0;
+  margin: 34px 0 0;
   color: #536075;
-  font-size: 1.18rem;
+  font-size: 1rem;
   font-weight: 650;
   text-align: center;
 }
