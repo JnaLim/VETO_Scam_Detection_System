@@ -197,7 +197,12 @@ textarea {
   color: var(--primary);
 }
 
-.home-section,
+.home-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
 .check-shell {
   max-width: 984px;
   margin: 0 auto;
