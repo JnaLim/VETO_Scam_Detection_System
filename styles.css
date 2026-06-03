@@ -1112,6 +1112,25 @@ textarea {
   font-size: 0.98rem;
 }
 
+.compact-check .extracted-review {
+  gap: 8px;
+  padding: 14px;
+}
+
+.compact-check .extracted-review h3 {
+  font-size: 0.95rem;
+}
+
+.compact-check .extracted-review p {
+  font-size: 0.86rem;
+}
+
+.compact-check .extracted-review textarea {
+  min-height: 84px;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+}
+
 .full-check .primary-action {
   min-height: 52px;
   margin-top: 22px;
