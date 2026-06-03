@@ -217,7 +217,11 @@
                   <strong>Drag and drop an image here, or click to select</strong>
                   <small>Supports OCR text extraction from images</small>
                 </div>
-                <textarea id="full-image-text" class="hidden-analysis-text" data-input="image-text" rows="4" placeholder="Extracted OCR text will appear here"></textarea>
+                <div class="extracted-review hidden-analysis-text" data-review="image">
+                  <h3>Review the extracted text before analysis</h3>
+                  <p>You can edit the extracted text if needed.</p>
+                  <textarea id="full-image-text" data-input="image-text" rows="4" placeholder="Extracted OCR text will appear here"></textarea>
+                </div>
               </div>
 
               <div class="tab-panel" data-panel="voice">
@@ -235,7 +239,11 @@
                   <strong>Drag and drop an audio file here, or click to select</strong>
                   <small>Supports speech-to-text conversion for voice messages</small>
                 </div>
-                <textarea id="full-voice-text" class="hidden-analysis-text" data-input="voice-text" rows="4" placeholder="Transcribed speech will appear here"></textarea>
+                <div class="extracted-review hidden-analysis-text" data-review="voice">
+                  <h3>Review the extracted text before analysis</h3>
+                  <p>You can edit the extracted text if needed.</p>
+                  <textarea id="full-voice-text" data-input="voice-text" rows="4" placeholder="Transcribed speech will appear here"></textarea>
+                </div>
               </div>
 
               <div class="tab-panel" data-panel="url">

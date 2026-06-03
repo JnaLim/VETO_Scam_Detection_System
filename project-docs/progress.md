@@ -2,6 +2,7 @@
 
 ## 2026-06-03
 
+- Added the uploaded file review step on the main Check page for image OCR and voice STT flows, showing the selected filename and a user-editable extracted text box before analysis.
 - Updated the main Check page panel to match the provided references: wider centered card, compact tab bar, URL-only input state, large image/voice upload dropzones, aligned benefit cards, and matching spacing.
 - Kept the existing mock OCR/STT flow intact by hiding the generated transcript textareas on the main Check page while still allowing JavaScript to populate and analyze them.
 - Updated the result page to match the provided Safe, Suspicious, and Dangerous result references.

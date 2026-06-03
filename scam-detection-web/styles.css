@@ -1072,12 +1072,44 @@ textarea {
   font-size: 0.96rem;
 }
 
+.full-check .upload-dropzone.has-file strong {
+  color: #111827;
+}
+
 .full-check .upload-dropzone small {
   font-size: 0.84rem;
 }
 
 .hidden-analysis-text {
-  display: none;
+  display: none !important;
+}
+
+.extracted-review {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid #d8dee8;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.extracted-review h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.02rem;
+}
+
+.extracted-review p {
+  margin: 0;
+  color: #536075;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.full-check .extracted-review textarea {
+  min-height: 84px;
+  padding: 12px 14px;
+  font-size: 0.98rem;
 }
 
 .full-check .primary-action {

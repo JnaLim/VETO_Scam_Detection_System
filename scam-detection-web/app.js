@@ -629,16 +629,36 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !scamModal.hidden) closeScamModal();
 });
 
+const showFileReview = (form, type, file) => {
+  const input = form.querySelector(`[data-input="${type}-file"]`);
+  const dropzone = input?.closest(".upload-dropzone");
+  const review = form.querySelector(`[data-review="${type}"]`);
+
+  if (dropzone) {
+    const fileName = dropzone.querySelector("strong");
+    const helperText = dropzone.querySelector("small");
+    if (fileName) fileName.textContent = file.name;
+    if (helperText) helperText.hidden = true;
+    dropzone.classList.add("has-file");
+  }
+
+  if (review) review.classList.remove("hidden-analysis-text");
+};
+
 document.querySelectorAll("[data-check-form]").forEach((form) => {
   form.querySelector('[data-input="image-file"]').addEventListener("change", (event) => {
-    if (event.target.files[0]) {
+    const file = event.target.files[0];
+    if (file) {
+      showFileReview(form, "image", file);
       form.querySelector('[data-input="image-text"]').value =
         "Congratulations! You have won a special reward. Verify your account details now to claim it.";
     }
   });
 
   form.querySelector('[data-input="voice-file"]').addEventListener("change", (event) => {
-    if (event.target.files[0]) {
+    const file = event.target.files[0];
+    if (file) {
+      showFileReview(form, "voice", file);
       form.querySelector('[data-input="voice-text"]').value =
         "Hello, this is an urgent notice from your bank. Your account may be suspended unless you confirm your details immediately.";
     }
