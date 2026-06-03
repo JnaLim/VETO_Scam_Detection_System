@@ -229,6 +229,14 @@ const saveHistory = (items) => {
 
 const normalizeText = (value) => value.toLowerCase().replace(/\s+/g, " ").trim();
 
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
 const detectKeywords = (text) =>
   keywordPatterns.filter((term) => normalizeText(text).includes(term));
 
@@ -270,6 +278,8 @@ const classifyContent = ({ type, text, url }) => {
   score += urlFactors.length * 12;
   if (type === "voice" && keywords.length > 0) score += 8;
   if (type === "image" && keywords.length > 0) score += 5;
+  if (type === "voice" && keywords.filter((term) => highRiskTerms.has(term)).length >= 2) score += 30;
+  if (type === "image" && keywords.length >= 2) score += 27;
   score = Math.min(score, 96);
 
   const label = score >= 72 ? "Dangerous" : score >= 40 ? "Suspicious" : "Legitimate";
@@ -368,48 +378,115 @@ const getInputPayload = (form) => {
 };
 
 const renderResult = (result) => {
-  const keywordHtml =
-    result.keywords.length > 0
-      ? result.keywords.map((keyword) => `<span class="keyword">${keyword}</span>`).join("")
-      : `<span class="keyword">No high-risk keywords detected</span>`;
-  const urlHtml =
-    result.urlFactors.length > 0
-      ? result.urlFactors.map((factor) => `<span class="risk-factor">${factor}</span>`).join("")
-      : `<span class="risk-factor">No URL risk factors detected</span>`;
+  const statusLabel = result.status === "safe" ? "Safe" : result.label;
+  const riskLabel =
+    result.status === "dangerous" ? "High Risk" : result.status === "suspicious" ? "Medium Risk" : "Low Risk";
+  const headline =
+    result.status === "dangerous"
+      ? "Strong scam indicators were detected. Avoid interacting with this content."
+      : result.status === "suspicious"
+        ? "Some scam-related patterns were detected and should be reviewed carefully."
+        : "No major scam indicators were detected in this content.";
+  const scanLabel =
+    result.type === "Voice" ? "Voice Analysis" : result.type === "Image" ? "Image Scan" : result.type === "URL" ? "Link Scan" : "Link Scan";
+  const scanMessage =
+    result.status === "dangerous"
+      ? result.type === "Voice"
+        ? "High-risk manipulation or pressure indicators were detected in the audio content"
+        : "High-risk scam indicators were detected"
+      : result.status === "suspicious"
+        ? result.type === "Image"
+          ? "Potentially misleading or suspicious visual content detected"
+          : "Some suspicious indicators were detected"
+        : "No phishing characteristics detected";
+  const contentMessage =
+    result.status === "dangerous"
+      ? "Strong urgency, manipulation, or threat-based language found"
+      : result.status === "suspicious"
+        ? "Some suspicious patterns were found and should be reviewed carefully"
+        : "Language and tone appear normal, with no urgency or threats";
+  const databaseMessage =
+    result.status === "dangerous"
+      ? "This content matches known scam-related warning patterns"
+      : result.status === "suspicious"
+        ? "Some indicators partially match reported scam patterns"
+        : "No related scam reports found";
+  const actionItems =
+    result.status === "dangerous"
+      ? ["Do not click, reply, or download anything", "Block the sender or source immediately", "Report the case through official reporting channels"]
+      : result.status === "suspicious"
+        ? ["Review the content carefully before taking action", "Verify the source through official channels", "Do not trust edited or misleading visuals immediately"]
+        : ["Stay cautious even when content appears harmless", "Verify unknown senders before replying", "Avoid sharing sensitive information casually"];
+  const actionButton = result.status === "dangerous" ? "Start New Check" : result.status === "suspicious" ? "Review Again" : "Check Another";
+  const highlightedTerms =
+    result.status === "safe"
+      ? []
+      : result.status === "dangerous"
+        ? ["urgent action", "verification request", "high-risk manipulation"]
+        : result.type === "Image"
+          ? ["unusual request", "edited or misleading image", "suspicious visual content"]
+          : result.keywords.length > 0
+            ? result.keywords
+            : ["unusual request", "suspicious pattern"];
+  const highlightedHtml =
+    highlightedTerms.length > 0
+      ? highlightedTerms.map((term) => `<span class="result-term">${escapeHtml(term)}</span>`).join("")
+      : `<p>No suspicious or dangerous phrases were strongly detected.</p>`;
 
   document.querySelector("#result-card").innerHTML = `
-    <div class="result-header">
-      <div>
-        <div class="status-row">
-          <span class="badge ${result.status}">${result.label}</span>
-          <span class="badge">Input: ${result.type}</span>
+    <section class="result-summary-card ${result.status}">
+      <div class="result-status-bar"><span>${statusLabel}</span></div>
+      <div class="result-summary-body">
+        <div class="result-verdict">
+          <span class="result-shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-2.9 8.5-7 10-4.1-1.5-7-5.4-7-10V6z" /></svg>
+          </span>
+          <div class="result-copy">
+            <h2>Analysis Complete: This looks ${statusLabel}</h2>
+            <p>${headline}</p>
+            <span class="risk-pill">Risk Level: ${riskLabel}</span>
+            <ul class="result-check-list">
+              <li><strong>${scanLabel}:</strong> ${scanMessage}</li>
+              <li><strong>Content Analysis:</strong> ${contentMessage}</li>
+              <li><strong>Database Check:</strong> ${databaseMessage}</li>
+            </ul>
+          </div>
         </div>
-        <h1>Analysis Complete: ${result.label}</h1>
-        <p class="result-summary">
-          Risk score combines text classifier confidence with URL indicators when a link is provided.
-        </p>
+        <aside class="result-score-panel">
+          <div class="result-ring ${result.status}" style="--score:${result.score}">
+            <strong>${result.score}%</strong>
+          </div>
+          <strong class="risk-name">${riskLabel}</strong>
+          <div class="risk-scale" style="--score:${result.score}">
+            <span>0</span>
+            <i></i>
+            <span>100</span>
+          </div>
+        </aside>
       </div>
-      <div class="gauge ${result.status}">
-        <div><strong>${result.score}%</strong><span>${result.score >= 72 ? "High" : result.score >= 40 ? "Medium" : "Low"} Risk</span></div>
-      </div>
-    </div>
-    <div class="result-sections">
-      <section class="explain-card">
-        <h2>Why this result was shown</h2>
-        <ul class="list">
-          <li>Text was normalized and analyzed through the classifier flow.</li>
-          <li>${result.keywords.length} suspicious keyword or phrase match(es) detected.</li>
-          <li>${result.urlFactors.length} URL risk factor(s) detected.</li>
-        </ul>
-        <h3>Suspicious keywords</h3>
-        <div class="factor-list">${keywordHtml}</div>
-        <h3>URL risk factors</h3>
-        <div class="factor-list">${urlHtml}</div>
+    </section>
+    <div class="result-detail-grid">
+      <section class="result-info-card">
+        <h2>Analysis Details</h2>
+        <div class="result-detail-box">
+          <span>Selected Type</span>
+          <p>${escapeHtml(result.type)}</p>
+        </div>
+        <div class="result-detail-box">
+          <span>Scanned Content</span>
+          <p>${escapeHtml(result.preview)}</p>
+        </div>
+        <div class="result-detail-box highlighted-box">
+          <span>Highlighted Terms</span>
+          <div class="result-term-list ${result.status}">${highlightedHtml}</div>
+        </div>
       </section>
-      <aside class="action-card">
+      <aside class="result-info-card">
         <h2>Recommended Action</h2>
-        <p>${result.action}</p>
-        <button class="primary-action" type="button" onclick="location.hash='check'">Check Another</button>
+        <ul class="recommended-list">
+          ${actionItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+        <button class="result-action-button" type="button" onclick="location.hash='check'">${actionButton}</button>
       </aside>
     </div>
   `;

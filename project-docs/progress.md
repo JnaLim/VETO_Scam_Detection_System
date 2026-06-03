@@ -1,5 +1,13 @@
 # Progress Log
 
+## 2026-06-03
+
+- Updated the result page to match the provided Safe, Suspicious, and Dangerous result references.
+- Reworked the result output into a status-colored summary card, risk score ring, analysis details card, highlighted terms, and recommended action card.
+- Adjusted image and voice scoring boosts so the demo OCR/STT flows can display the intended Suspicious and Dangerous result states.
+- Added HTML escaping for rendered result content to avoid injecting submitted text directly into the result page.
+- Verification: served the app with `python3 -m http.server 4173`, confirmed `HTTP/1.0 200 OK` for `/`, and checked the served HTML/JS contains the updated result page structure and labels.
+
 ## 2026-05-08
 
 - Added a confirmation step before clearing all local history records from the View History page.
