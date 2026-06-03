@@ -124,10 +124,10 @@ textarea {
   grid-template-columns: minmax(520px, 0.95fr) minmax(340px, 0.75fr);
   gap: clamp(28px, 4vw, 58px);
   align-items: center;
-  max-width: 1180px;
+  width: 100%;
   min-height: 700px;
   margin: 0 auto;
-  padding: 46px 24px 70px;
+  padding: 46px clamp(28px, 7vw, 150px) 70px;
 }
 
 .home-copy {
@@ -198,9 +198,9 @@ textarea {
 }
 
 .home-section {
-  max-width: 1180px;
+  width: 100%;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 72px clamp(28px, 7vw, 150px);
 }
 
 .check-shell {
@@ -365,7 +365,7 @@ textarea {
 }
 
 .mechanics-page {
-  max-width: 1700px;
+  width: 100%;
   margin: 0 auto;
   padding: 84px clamp(28px, 7vw, 150px) 64px;
 }

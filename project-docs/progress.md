@@ -2,6 +2,7 @@
 
 ## 2026-06-03
 
+- Re-aligned the Home hero, Home content sections, and Scam Types mechanics page to the same horizontal gutter as the header logo.
 - Aligned the Home `Our Features`, `What To Do If You've Been Scammed`, and `How It Works` sections to the wider homepage/header content width while keeping the main check page width unchanged.
 - Reduced the homepage hero, quick checking panel, and illustration scale so the Home page aligns more closely with the narrower How It Works section rhythm.
 - Applied the same uploaded file review step to the Home quick checking panel so image and voice uploads show the selected filename and editable extracted text before analysis.
