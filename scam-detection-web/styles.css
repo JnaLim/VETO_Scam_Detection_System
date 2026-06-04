@@ -44,7 +44,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px clamp(28px, 7vw, 150px);
+  padding: 10px clamp(28px, 7vw, 150px);
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(14px);
@@ -64,7 +64,7 @@ textarea {
 
 .brand img {
   display: block;
-  width: 130px;
+  width: 100px;
   height: auto;
 }
 
@@ -91,7 +91,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 40px;
   border-radius: 8px;
   padding: 0 18px;
   background: var(--brand-blue);
@@ -143,7 +143,7 @@ textarea {
 
 .home-copy h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3.6rem, 5.4vw, 5.9rem);
+  font-size: clamp(3.6rem, 4.4vw, 5.9rem);
   line-height: 1.05;
   letter-spacing: 0;
   color: #101827;
@@ -367,13 +367,13 @@ textarea {
 .mechanics-page {
   width: 100%;
   margin: 0 auto;
-  padding: 84px clamp(28px, 7vw, 150px) 64px;
+  padding: 44px clamp(28px, 7vw, 150px) 64px;
 }
 
 .mechanics-page h1 {
   margin-bottom: 54px;
   color: var(--brand-blue);
-  font-size: clamp(3.2rem, 5.2vw, 5.7rem);
+  font-size: clamp(3.2rem, 4.4vw, 5.7rem);
   line-height: 1.05;
   text-align: center;
 }
@@ -426,7 +426,7 @@ textarea {
 
 .scam-type-card button {
   min-width: 110px;
-  min-height: 54px;
+  min-height: 44px;
   border: 2px solid var(--brand-blue);
   border-radius: 16px;
   background: white;
@@ -558,7 +558,7 @@ textarea {
 
 .modal-secondary,
 .modal-primary {
-  min-width: 112px;
+  min-width: 155px;
   min-height: 58px;
   display: inline-flex;
   align-items: center;
@@ -585,13 +585,13 @@ textarea {
 .guide-page {
   max-width: 1580px;
   margin: 0 auto;
-  padding: 76px clamp(28px, 7vw, 150px) 70px;
+  padding: 44px clamp(28px, 7vw, 150px) 64px;
 }
 
 .guide-page h1 {
   margin-bottom: 56px;
   color: var(--brand-blue);
-  font-size: clamp(3rem, 4.8vw, 5rem);
+  font-size: clamp(3rem, 4.4vw, 5rem);
   line-height: 1.08;
   text-align: center;
 }
@@ -609,7 +609,7 @@ textarea {
 }
 
 .guide-tabs button {
-  min-height: 58px;
+  min-height: 50px;
   border: 0;
   border-radius: 12px;
   background: transparent;
@@ -764,7 +764,7 @@ textarea {
   right: 28px;
   bottom: 28px;
   min-width: 112px;
-  min-height: 56px;
+  min-height: 44px;
   border: 2px solid var(--brand-blue);
   border-radius: 16px;
   background: white;
@@ -1382,7 +1382,7 @@ h3 {
 }
 
 .tab {
-  min-height: 64px;
+  min-height: 44px;
   border: 0;
   border-radius: 16px;
   background: transparent;
@@ -1507,7 +1507,7 @@ input:focus {
 
 .primary-action {
   width: 100%;
-  min-height: 64px;
+  min-height: 50px;
   margin-top: 18px;
   background: var(--brand-blue);
   color: white;
@@ -1539,7 +1539,8 @@ input:focus {
   border-radius: 10px;
   background: #fff1f1;
   color: #c82b2b;
-  font-weight: 800;
+  font-weight: 500;
+  font-size: 1.10rem;
 }
 
 .form-error:not(:empty)::before {
@@ -2007,17 +2008,17 @@ input:focus {
 
 .history-list {
   display: grid;
-  gap: 28px;
+  gap: 22px;
   margin-top: 46px;
 }
 
 .history-item {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr) auto;
-  gap: 22px;
-  align-items: start;
-  min-height: 164px;
-  padding: 32px;
+  gap: 18px;
+  align-items: center;
+  min-height: 138px;
+  padding: 24px 30px;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: white;
@@ -2035,6 +2036,21 @@ input:focus {
   font-weight: 900;
 }
 
+.type-icon.url {
+  background: #fff8e8;
+  color: #f07c00;
+}
+
+.type-icon.voice {
+  background: #e7fbf2;
+  color: #00a974;
+}
+
+.type-icon.image {
+  background: #f8eaff;
+  color: #a020ff;
+}
+
 .type-icon svg {
   width: 34px;
   height: 34px;
@@ -2047,7 +2063,7 @@ input:focus {
 
 .history-main {
   display: grid;
-  gap: 15px;
+  gap: 12px;
 }
 
 .history-meta {
@@ -2062,6 +2078,7 @@ input:focus {
 .history-type-pill {
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   min-height: 28px;
   border-radius: 999px;
   padding: 0 14px;
@@ -2070,9 +2087,35 @@ input:focus {
   font-weight: 850;
 }
 
+.history-type-pill svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.history-type-pill.url {
+  background: #fff0c2;
+  color: #e76f00;
+}
+
+.history-type-pill.voice {
+  background: #caf7e4;
+  color: #009a69;
+}
+
+.history-type-pill.image {
+  background: #eed2ff;
+  color: #9b1eff;
+}
+
 .history-main strong {
   color: #151d2d;
   font-size: 1.18rem;
+  line-height: 1.38;
 }
 
 .history-risk-row {
@@ -2084,13 +2127,38 @@ input:focus {
   font-weight: 800;
 }
 
+.history-risk-row .badge {
+  min-height: 30px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.93rem;
+  font-weight: 900;
+}
+
+.history-risk-row .badge.safe {
+  background: #09a33a;
+}
+
+.history-risk-row .badge.suspicious {
+  background: #ef970a;
+}
+
+.history-risk-row .badge.dangerous {
+  background: #dc0808;
+}
+
 .history-actions {
   display: flex;
   gap: 26px;
-  padding-top: 12px;
+  align-items: center;
 }
 
 .link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   border: 0;
   background: transparent;
   color: var(--primary);
@@ -2099,26 +2167,28 @@ input:focus {
   cursor: pointer;
 }
 
-.view-action {
-  color: #2f7cff;
+.link-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.view-action::before {
-  content: "⊙ ";
+.view-action {
+  color: #2f7cff;
 }
 
 .delete-action {
   color: #dc2626;
 }
 
-.delete-action::before {
-  content: "▥ ";
-}
-
 .history-page {
   max-width: 1700px;
   margin: 0 auto;
-  padding: 70px clamp(28px, 7vw, 130px) 80px;
+  padding: 44px clamp(28px, 7vw, 130px) 64px;
 }
 
 .history-title {
@@ -2130,7 +2200,7 @@ input:focus {
 .history-title h1 {
   margin-bottom: 18px;
   color: #254766;
-  font-size: clamp(3.4rem, 5.4vw, 5rem);
+  font-size: clamp(3.4rem, 4.4vw, 5rem);
   line-height: 1.05;
 }
 
@@ -2143,7 +2213,7 @@ input:focus {
   position: absolute;
   right: 0;
   top: 86px;
-  min-height: 48px;
+  min-height: 44px;
   border: 0;
   border-radius: 12px;
   padding: 0 22px;
@@ -2457,7 +2527,7 @@ input:focus {
 .footer-inner {
   max-width: 1700px;
   margin: 0 auto;
-  padding: 48px clamp(28px, 7vw, 150px) 34px;
+  padding: 40px clamp(28px, 7vw, 150px) 25px;
 }
 
 .footer-top {

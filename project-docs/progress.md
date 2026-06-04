@@ -2,6 +2,8 @@
 
 ## 2026-06-04
 
+- Updated the View History page to match the multi-record reference layout with type-specific icons, colored type pills, status badges, and aligned `View`/`Delete` actions.
+- Verification: ran `git diff --check`, served the static app with `python3 -m http.server 4173`, confirmed `HTTP/1.0 200 OK` for `/`, `/app.js`, and `/styles.css`, and checked the updated history selectors/actions exist in the served files. `node --check` could not run because `node` is not installed.
 - Published the local `main` branch to the user's GitHub repository at `https://github.com/JnaLim/FYP.git` for version control.
 - Preserved the original Superpowers remote as `upstream` and set the user's repository as `origin`.
 - Verification: confirmed `main` tracks `origin/main` and `git remote -v` shows `origin` as `JnaLim/FYP`.

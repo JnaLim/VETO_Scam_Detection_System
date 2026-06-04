@@ -518,34 +518,55 @@ const renderHistory = () => {
     return;
   }
 
+  const typeStyles = {
+    Text: {
+      key: "text",
+      icon: `<svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z" /><path d="M14 3v5h5" /><path d="M9 12h6M9 16h6" /></svg>`,
+    },
+    Image: {
+      key: "image",
+      icon: `<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2" /><circle cx="9" cy="10" r="1.6" /><path d="M7 17l4.2-4.2 2.8 2.8 2-2L20 17" /></svg>`,
+    },
+    Voice: {
+      key: "voice",
+      icon: `<svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" /></svg>`,
+    },
+    URL: {
+      key: "url",
+      icon: `<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l1.4-1.4a5 5 0 0 0-7.1-7.1L10.5 5.4" /><path d="M14 11a5 5 0 0 0-7.1 0l-1.4 1.4a5 5 0 0 0 7.1 7.1l.9-.9" /></svg>`,
+    },
+  };
+
+  const actionIcon = {
+    view: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" /><circle cx="12" cy="12" r="2.6" /></svg>`,
+    delete: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16" /><path d="M10 11v6M14 11v6" /><path d="M6 7l1 14h10l1-14" /><path d="M9 7V4h6v3" /></svg>`,
+  };
+
   list.innerHTML = items
     .map(
       (item) => {
         const status = item.score >= 72 ? "dangerous" : item.score >= 40 ? "suspicious" : "safe";
-        const label = status === "safe" ? "Safe" : item.label;
+        const label = status === "safe" ? "Safe" : status === "dangerous" ? "Dangerous" : "Suspicious";
+        const type = typeStyles[item.type] || typeStyles.Text;
         return `
-        <article class="history-item">
-          <span class="type-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M7 3h7l4 4v14H7z" />
-              <path d="M14 3v5h5" />
-              <path d="M9 12h6M9 16h6" />
-            </svg>
+        <article class="history-item ${type.key}">
+          <span class="type-icon ${type.key}" aria-hidden="true">
+            ${type.icon}
           </span>
           <div class="history-main">
             <div class="history-meta">
-              <span class="history-type-pill">${item.type}</span>
-              <span>${item.timestamp}</span>
+              <span class="history-type-pill ${type.key}">${type.icon}${escapeHtml(item.type)}</span>
+              <span>${escapeHtml(item.timestamp)}</span>
             </div>
-            <strong>${item.preview}</strong>
+            <strong>${escapeHtml(item.preview)}</strong>
             <div class="history-risk-row">
               <span class="badge ${status}">${label}</span>
               <span>Risk: ${item.score}%</span>
             </div>
           </div>
           <div class="history-actions">
-            <button class="link-button view-action" type="button" data-view="${item.id}">View</button>
-            <button class="link-button delete-action" type="button" data-delete="${item.id}">Delete</button>
+            <button class="link-button view-action" type="button" data-view="${item.id}">${actionIcon.view}View</button>
+            <button class="link-button delete-action" type="button" data-delete="${item.id}">${actionIcon.delete}Delete</button>
           </div>
         </article>
       `;
@@ -684,8 +705,10 @@ document.querySelectorAll("[data-check-form]").forEach((form) => {
 });
 
 document.querySelector("#history-list").addEventListener("click", (event) => {
-  const viewId = event.target.dataset.view;
-  const deleteId = event.target.dataset.delete;
+  const actionButton = event.target.closest("[data-view], [data-delete]");
+  if (!actionButton) return;
+  const viewId = actionButton.dataset.view;
+  const deleteId = actionButton.dataset.delete;
   if (viewId) {
     const item = getHistory().find((historyItem) => historyItem.id === viewId);
     if (item) {
