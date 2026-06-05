@@ -346,6 +346,17 @@ const setActiveTab = (tab) => {
   });
 };
 
+const setFormLoading = (form, isLoading) => {
+  const panel = form.closest(".analysis-panel");
+  form.classList.toggle("is-loading", isLoading);
+  if (panel) panel.classList.toggle("is-loading", isLoading);
+  form.querySelectorAll("input, textarea, button").forEach((control) => {
+    control.disabled = isLoading;
+  });
+  const loader = form.querySelector("[data-loading]");
+  if (loader) loader.setAttribute("aria-hidden", String(!isLoading));
+};
+
 const getInputPayload = (form) => {
   const type = state.activeTab;
   if (type === "text") {
@@ -692,13 +703,23 @@ document.querySelectorAll("[data-check-form]").forEach((form) => {
 
     try {
       const payload = getInputPayload(form);
-      const result = classifyContent(payload);
-      state.latestResult = result;
-      const history = [result, ...getHistory()].slice(0, 20);
-      saveHistory(history);
-      renderResult(result);
-      location.hash = "result";
+      setFormLoading(form, true);
+      window.setTimeout(() => {
+        try {
+          const result = classifyContent(payload);
+          state.latestResult = result;
+          const history = [result, ...getHistory()].slice(0, 20);
+          saveHistory(history);
+          renderResult(result);
+          location.hash = "result";
+        } catch (err) {
+          error.textContent = err.message;
+        } finally {
+          setFormLoading(form, false);
+        }
+      }, 1200);
     } catch (err) {
+      setFormLoading(form, false);
       error.textContent = err.message;
     }
   });

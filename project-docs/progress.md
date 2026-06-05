@@ -1,5 +1,11 @@
 # Progress Log
 
+## 2026-06-05
+
+- Added an `Analyzing Content` loading state to both the homepage quick checking panel and the main Check page.
+- The submit flow now validates input first, shows a blurred panel with spinner and progress bar, temporarily disables controls, then renders the result after a short simulated analysis delay.
+- Verification: ran `git diff --check`, served the static app with `python3 -m http.server 4173`, and confirmed `HTTP/1.0 200 OK` for `/`, `/app.js`, and `/styles.css`.
+
 ## 2026-06-04
 
 - Updated the View History page to match the multi-record reference layout with type-specific icons, colored type pills, status badges, and aligned `View`/`Delete` actions.
