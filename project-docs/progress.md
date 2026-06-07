@@ -1,5 +1,11 @@
 # Progress Log
 
+## 2026-06-08
+
+- Updated the result page action button (`Check Another`, `Review Again`, or `Start New Check`) so it routes directly to the standalone main Check page.
+- Replaced the inline hash assignment with a shared `data-start-check` click handler that opens the `#check` view reliably even if the route is already active.
+- Verification: ran `git diff --check`, confirmed the new handler exists and the old inline handler is removed with `rg`, served the static app with `python3 -m http.server 4173`, and confirmed `HTTP/1.0 200 OK` for `/`, `/app.js`, and `/styles.css`. `node --check` could not run because `node` is not installed.
+
 ## 2026-06-05
 
 - Added an `Analyzing Content` loading state to both the homepage quick checking panel and the main Check page.

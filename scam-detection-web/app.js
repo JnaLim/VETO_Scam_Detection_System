@@ -333,6 +333,14 @@ const showView = (rawName) => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
+const navigateToMainCheck = () => {
+  if (location.hash === "#check") {
+    showView("check");
+    return;
+  }
+  location.hash = "check";
+};
+
 const setActiveTab = (tab) => {
   state.activeTab = tab;
   document.querySelectorAll(".tab").forEach((button) => {
@@ -497,7 +505,7 @@ const renderResult = (result) => {
         <ul class="recommended-list">
           ${actionItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
         </ul>
-        <button class="result-action-button" type="button" onclick="location.hash='check'">${actionButton}</button>
+        <button class="result-action-button" type="button" data-start-check>${actionButton}</button>
       </aside>
     </div>
   `;
@@ -753,6 +761,12 @@ document.querySelector("#history-list").addEventListener("click", (event) => {
     saveHistory(getHistory().filter((item) => item.id !== deleteId));
     renderHistory();
   }
+});
+
+document.addEventListener("click", (event) => {
+  const startCheckButton = event.target.closest("[data-start-check]");
+  if (!startCheckButton) return;
+  navigateToMainCheck();
 });
 
 document.querySelector("#clear-history").addEventListener("click", () => {
