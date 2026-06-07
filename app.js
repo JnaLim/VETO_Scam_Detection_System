@@ -465,9 +465,9 @@ const renderResult = (result) => {
             <p>${headline}</p>
             <span class="risk-pill">Risk Level: ${riskLabel}</span>
             <ul class="result-check-list">
-              <li><strong>${scanLabel}:</strong> ${scanMessage}</li>
-              <li><strong>Content Analysis:</strong> ${contentMessage}</li>
-              <li><strong>Database Check:</strong> ${databaseMessage}</li>
+              <li><span class="result-check-text"><strong>${scanLabel}:</strong> ${scanMessage}</span></li>
+              <li><span class="result-check-text"><strong>Content Analysis:</strong> ${contentMessage}</span></li>
+              <li><span class="result-check-text"><strong>Database Check:</strong> ${databaseMessage}</span></li>
             </ul>
           </div>
         </div>

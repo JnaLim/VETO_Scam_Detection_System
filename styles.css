@@ -390,7 +390,7 @@ textarea {
   gap: 22px;
   align-items: center;
   min-height: 136px;
-  padding: 26px 30px;
+  padding: 30px 30px;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: white;
@@ -559,7 +559,7 @@ textarea {
 .modal-secondary,
 .modal-primary {
   min-width: 155px;
-  min-height: 58px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1861,8 +1861,10 @@ input:focus {
 }
 
 .result-check-list li {
-  position: relative;
-  padding-left: 42px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 18px;
+  align-items: start;
   color: #4b5567;
   font-size: clamp(0.98rem, 1.25vw, 1.12rem);
   font-weight: 650;
@@ -1871,18 +1873,21 @@ input:focus {
 
 .result-check-list li::before {
   content: "✓";
-  position: absolute;
-  left: 0;
-  top: -2px;
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 34px;
+  height: 34px;
+  margin-top: calc((1.55em - 34px) / 2);
   border-radius: 50%;
   background: var(--result-color);
   color: white;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 900;
+  line-height: 1;
+}
+
+.result-check-text {
+  min-width: 0;
 }
 
 .result-check-list strong {
@@ -1994,7 +1999,7 @@ input:focus {
   background: #fafbfc;
 }
 
-.result-detail-box span {
+.result-detail-box > span {
   display: block;
   margin-bottom: 8px;
   color: #7b8493;
@@ -2024,13 +2029,17 @@ input:focus {
 .result-term {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
+  justify-content: center;
+  min-height: 30px;
   border-radius: 999px;
-  padding: 0 14px;
+  padding: 0 18px;
   background: var(--term-bg);
   color: var(--result-color);
   font-size: 0.84rem;
   font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
 }
 
 .result-term-list.safe {
