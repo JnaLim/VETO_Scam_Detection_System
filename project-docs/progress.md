@@ -2,6 +2,10 @@
 
 ## 2026-06-20
 
+- Replaced the root README with a VETO-focused project overview, user/admin manual, quantitative prototype details, current localStorage storage notes, and ongoing Text/Image/Voice AI model scope.
+- Clarified that the current system is a React + Vite frontend prototype with no real database, backend, payment, or production AI model yet.
+- Verification: ran `git diff --check` for `README.md` and confirmed key README sections/terms with `rg`; checks passed.
+
 - Updated the Pricing page into an `Upgrade Plan` page with the new subtitle, a `Your Current Plan` card, and an `Available Plans` heading before the Free/Student/Pro cards.
 - Changed current-plan wording from `Current Plan Summary` to `Your Current Plan`, renamed the feature list to `Current features`, shortened the prototype note, and changed logged-in plan selection feedback to `Plan selection preview only.`
 - Verification: ran `npm run build` in `scam-detection-web/`, ran `git diff --check` for `Pricing.jsx` and `styles.css`, and confirmed Settings has no Plan Summary while the dropdown still links Upgrade plan to `/pricing`; all checks passed.
