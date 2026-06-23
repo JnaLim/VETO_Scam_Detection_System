@@ -1,6 +1,6 @@
 # VETO Scam Detection System (Ongoing) 
 
-VETO is a web-based scam detection prototype for a Final Year Project. The system is designed to help users check suspicious text, URLs, uploaded images, uploaded files, and voice content before they trust or respond to it.
+VETO is a AI-based scam detection prototype for a Final Year Project. The system is designed to help users check suspicious text, URLs, uploaded images, uploaded files, and voice content before they trust or respond to it.
 
 The current repository contains a React + Vite frontend prototype. It demonstrates the planned user flow, result explanation, scan history, pricing prototype, settings page, contact support flow, and admin monitoring dashboard. It does not currently use a real backend, database, payment system, or trained production AI model.
 
