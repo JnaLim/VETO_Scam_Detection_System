@@ -91,7 +91,7 @@ Expected output:
 - Speech-to-text transcript.
 - Scam risk result from transcript.
 
-## Planned System Architecture
+## System Architecture
 
 Current prototype:
 
@@ -191,23 +191,6 @@ Text model / Image model / Voice model
 * Visual Studio Code
 * GitHub
 * Figma
-
-
-## Development Status
-
-Current status: Frontend prototype completed and ongoing AI/backend integration planned.
-
-Next planned work:
-
-1. Prepare dataset for text scam classification.
-2. Train and evaluate TF-IDF + Logistic Regression text model.
-3. Compare text model performance against Naive Bayes and SVM.
-4. Add OCR pipeline for image input.
-5. Add image tamper/authentic classifier.
-6. Add speech-to-text pipeline for voice input.
-7. Add voice human/bot classifier.
-8. Design backend API and database schema.
-9. Connect frontend to backend and model services.
 
 ## License
 
