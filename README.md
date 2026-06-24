@@ -1,8 +1,8 @@
 # VETO Scam Detection System (Ongoing) 
 
-VETO is a AI-based scam detection system for a Final Year Project. The system is designed to help users check suspicious text, URLs, uploaded images, uploaded files, and voice content before they trust or respond to it.
+VETO is a AI-based scam detection system for a Final Year Project. The system is designed to help users check suspicious text, URLs, uploaded images, uploaded files and voice content before they trust or respond to it.
 
-The current repository contains a React + Vite frontend prototype. It demonstrates the planned user flow, result explanation, scan history, pricing prototype, settings page, contact support flow, and admin monitoring dashboard. It does not currently use a real backend, database, payment system, or trained production AI model.
+The current repository contains a React + Vite frontend prototype. It demonstrates the planned user flow, result explanation, scan history, pricing prototype, settings page, contact support flow and admin monitoring dashboard. It does not currently use a real backend, database, payment system or trained production AI model.
 
 ## What This System Does
 
@@ -12,16 +12,16 @@ Current prototype functions include:
 
 1. User login and logout prototype.
 2. Admin login and logout prototype.
-3. Scam checking page for text, image, voice, and URL input.
-4. Result page with risk status, risk score, explanation, highlighted terms, and recommended action.
+3. Scam checking page for text, image, voice and URL input.
+4. Result page with risk status, risk score, explanation, highlighted terms and recommended action.
 5. Scan history using browser local storage.
 6. Scam Types page with scam category information.
 7. Guide page with scam prevention and recovery guidance.
 8. FAQ and legal information pages.
 9. Settings page for mock personal details.
-10. Upgrade Plan page with Free, Student, and Pro prototype plans.
+10. Upgrade Plan page with Free, Student and Pro prototype plans.
 11. Contact Support modal that stores messages in local storage.
-12. Admin Dashboard for mock system monitoring, model metrics, system logs, and support messages.
+12. Admin Dashboard for mock system monitoring, model metrics, system logs and support messages.
 
 ## AI Model Scope
 
