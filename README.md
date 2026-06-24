@@ -19,7 +19,7 @@ Current prototype functions include:
 7. Guide page with scam prevention and recovery guidance.
 8. FAQ and legal information pages.
 9. Settings page for mock personal details.
-10. Upgrade Plan page with Free, Student and Pro prototype plans.
+10. Upgrade Plan page with Free and Pro prototype plans.
 11. Contact Support modal that stores messages in local storage.
 12. Admin Dashboard for mock system monitoring, model metrics, system logs and support messages.
 
